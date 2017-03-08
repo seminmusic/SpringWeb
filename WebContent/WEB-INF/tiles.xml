@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+   <!-- Layout Templates -->
+   <definition name="Layout.Default" template="/WEB-INF/Tiles/layouts/_default.jsp">
+       <put-attribute name="title"  value="" />
+       <put-attribute name="menu"   value="/WEB-INF/Tiles/fragments/_menu.jsp" />
+       <put-attribute name="body"   value="" />
+       <put-attribute name="footer" value="/WEB-INF/Tiles/fragments/_footer.jsp" />
+       <!-- CSS Core -->
+       <put-list-attribute name="css">
+           <add-attribute value="/css/bootstrap.min.css" />
+           <add-attribute value="/css/font-awesome.min.css" />
+           <add-attribute value="/css/custom/site.css" />
+       </put-list-attribute>
+       <!-- JS Core -->
+       <put-list-attribute name="js">
+           <add-attribute value="/js/jquery-3.1.1.min.js" />
+           <add-attribute value="/js/bootstrap.min.js" />
+       </put-list-attribute>
+   </definition>
+   
+   <!-- Home/Index page -->
+   <definition name="Home/Index" extends="Layout.Default">
+       <put-attribute name="title" value="BamPay Administration | Home" />
+       <put-attribute name="body"  value="/WEB-INF/Views/Home/Index.jsp" />
+       <!-- Dodatno JS -->
+       <put-list-attribute name="js" inherit="true">
+           <add-attribute value="/js/custom/home.index.js" />
+       </put-list-attribute>
+   </definition>
+   
+   <!-- Bank/Index page -->
+   <definition name="Bank/Index" extends="Layout.Default">
+       <put-attribute name="title" value="BamPay Administration | Banks" />
+       <put-attribute name="body"  value="/WEB-INF/Views/Bank/Index.jsp" />
+   </definition>
+   <!-- Bank/Edit page -->
+   <definition name="Bank/Edit" extends="Layout.Default">
+       <put-attribute name="title" value="BamPay Administration | New / Edit Bank" />
+       <put-attribute name="body"  value="/WEB-INF/Views/Bank/Edit.jsp" />
+   </definition>
+   
+</tiles-definitions>

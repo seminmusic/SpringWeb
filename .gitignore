@@ -1,0 +1,17 @@
+/build/
+/target/
+
+# Postavke
+.settings/
+
+# JDT-specific (Eclipse Java Development Tools)
+.classpath
+
+# Eclipse Core
+.project
+
+# Tern plugin
+.tern-project
+
+application.properties
+
