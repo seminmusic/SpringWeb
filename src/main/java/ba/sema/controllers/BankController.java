@@ -11,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ba.sema.entities.Bank;
@@ -32,7 +33,7 @@ public class BankController
 	}
 	
 	// GET - Sve banke:
-	@RequestMapping(value = "/list")
+	@RequestMapping(value = {"/", "/list"}, method = RequestMethod.GET)
 	public String listAllBanks(Model model)
 	{
 		List<Bank> allBanks = bankService.getAllBanks();
@@ -51,11 +52,34 @@ public class BankController
 	}
 	
 	// GET - Izmjena banke:
+	// Sa HttpServletRequest:
+//	@RequestMapping(value = "/edit-bank", method = RequestMethod.GET)
+//	public ModelAndView editBank(HttpServletRequest request)
+//	{
+//		int bankId = Integer.parseInt(request.getParameter("bankId"));
+//		Bank bank = bankService.getBank(bankId);
+//		ModelAndView model = new ModelAndView("Bank/Edit");
+//		model.addObject("bank", bank);
+//		return model;
+//	}
+	// Sa @RequestParam:
+	// Default - naziv varijable je isti kao naziv parametra u requestu: @RequestParam int nazivVarijable
+	// Ako je naziv parametra u requestu različit od naziva kojeg smo dali varijabli: @RequestParam("nazivParametra") int nazivVarijable
+	// Neobavezan parametar: @RequestParam(required = false) int nazivVarijable
+	// Default vrijednost varijable ako je parametar u requestu prazan ili ga nema nikako: @RequestParam(defaultValue = "18") int nazivVarijable
+	// Pristup svim parametrima requesta kao Map objekat (key-value parovi): @RequestParam Map<String, String> parametri
 	@RequestMapping(value = "/edit-bank", method = RequestMethod.GET)
-	public ModelAndView editBank(HttpServletRequest request)
+	//public ModelAndView editBank(@RequestParam int bankId)
+	//public ModelAndView editBank(@RequestParam("bankId") int id)
+	//public ModelAndView editBank(@RequestParam("bankId") int id, @RequestParam(value = "nes", required = false) String nesto)
+	//public ModelAndView editBank(@RequestParam("bankId") int id, @RequestParam(value = "nes", required = false, defaultValue = "Default vrijednost") String nesto)
+	public ModelAndView editBank(@RequestParam("bankId") int id, @RequestParam(value = "nes", defaultValue = "Default vrijednost") String nesto)  // Ne treba required = false kad ima defaultValue
 	{
-		int bankId = Integer.parseInt(request.getParameter("bankId"));
-		Bank bank = bankService.getBank(bankId);
+		//Bank bank = bankService.getBank(bankId);
+		Bank bank = bankService.getBank(id);
+		
+		System.out.println("====== nesto parametar: " + nesto + " =======");
+		
 		ModelAndView model = new ModelAndView("Bank/Edit");
 		model.addObject("bank", bank);
 		return model;

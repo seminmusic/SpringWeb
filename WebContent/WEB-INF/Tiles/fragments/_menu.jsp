@@ -13,7 +13,7 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
                 <li>
-                	<a href="${pageContext.request.contextPath}/banks/list" class="navbar-brand">Banks ć</a>
+                	<a href="${pageContext.request.contextPath}/banks/list" class="navbar-brand">Banks</a>
                 </li>
             </ul>
         </div>
