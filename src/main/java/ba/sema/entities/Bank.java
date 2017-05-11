@@ -24,11 +24,22 @@ public class Bank implements Serializable
 	
 	@Column
 	private int status;
-
+	
+	@Column
+	private String bin;
+	
+	@Column(name = "uppid")
+	private String uppId;
+	
+	@Column(name = "bamcardid", nullable = true)
+	private Integer bamcardId;
+	
+	
 	public int getBankId()
 	{
 		return bankId;
 	}
+
 	public void setBankId(int bankId)
 	{
 		this.bankId = bankId;
@@ -38,6 +49,7 @@ public class Bank implements Serializable
 	{
 		return bankName;
 	}
+
 	public void setBankName(String bankName)
 	{
 		this.bankName = bankName;
@@ -47,8 +59,39 @@ public class Bank implements Serializable
 	{
 		return status;
 	}
+
 	public void setStatus(int status)
 	{
 		this.status = status;
+	}
+
+	public String getBin()
+	{
+		return bin;
+	}
+
+	public void setBin(String bin)
+	{
+		this.bin = bin;
+	}
+
+	public String getUppId()
+	{
+		return uppId;
+	}
+
+	public void setUppId(String uppId)
+	{
+		this.uppId = uppId;
+	}
+
+	public Integer getBamcardId()
+	{
+		return bamcardId;
+	}
+
+	public void setBamcardId(int bamcardId)
+	{
+		this.bamcardId = bamcardId;
 	}
 }

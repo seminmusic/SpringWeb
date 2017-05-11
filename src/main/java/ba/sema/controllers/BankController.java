@@ -1,6 +1,7 @@
 package ba.sema.controllers;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -33,7 +34,7 @@ public class BankController
 	}
 	
 	// GET - Sve banke:
-	@RequestMapping(value = {"/", "/list"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"", "/", "/list"}, method = RequestMethod.GET)
 	public String listAllBanks(Model model)
 	{
 		List<Bank> allBanks = bankService.getAllBanks();
@@ -73,11 +74,14 @@ public class BankController
 	//public ModelAndView editBank(@RequestParam("bankId") int id)
 	//public ModelAndView editBank(@RequestParam("bankId") int id, @RequestParam(value = "nes", required = false) String nesto)
 	//public ModelAndView editBank(@RequestParam("bankId") int id, @RequestParam(value = "nes", required = false, defaultValue = "Default vrijednost") String nesto)
-	public ModelAndView editBank(@RequestParam("bankId") int id, @RequestParam(value = "nes", defaultValue = "Default vrijednost") String nesto)  // Ne treba required = false kad ima defaultValue
+	//public ModelAndView editBank(@RequestParam("bankId") int id, @RequestParam(value = "nes", defaultValue = "Default vrijednost") String nesto)  // Kada ima defaultValue, automatski je postavljeno required = false
+	public ModelAndView editBank(@RequestParam Map<String, String> sviParametri)  // Svi parametri requesta kao key-value parovi
 	{
 		//Bank bank = bankService.getBank(bankId);
-		Bank bank = bankService.getBank(id);
+		//Bank bank = bankService.getBank(id);
+		Bank bank = bankService.getBank(Integer.parseInt(sviParametri.get("bankId")));
 		
+		String nesto = sviParametri.get("nes");
 		System.out.println("====== nesto parametar: " + nesto + " =======");
 		
 		ModelAndView model = new ModelAndView("Bank/Edit");

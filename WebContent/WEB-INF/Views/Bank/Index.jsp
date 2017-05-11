@@ -14,6 +14,9 @@
 				<th>ID</th>
 				<th>Bank Name</th>
 				<th>Status</th>
+				<th>BIN</th>
+				<th>UPP ID</th>
+				<th>Bamcard ID</th>
 				<th>Action</th>
 			</tr>
 		</thead>
@@ -23,6 +26,9 @@
 					<td>${bank.bankId}</td>
 					<td>${bank.bankName}</td>
 					<td>${bank.status}</td>
+					<td>${bank.bin}</td>
+					<td>${bank.uppId}</td>
+					<td>${bank.bamcardId}</td>
 					<td>
 						<a href="edit-bank?bankId=${bank.bankId}" style="float: left">
 							<i class="fa fa-pencil" style="color: blue"></i> Edit Bank
