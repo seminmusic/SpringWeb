@@ -4,11 +4,13 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
 
 import org.jboss.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -91,8 +93,15 @@ public class BankController
 	
 	// POST - Nova ili izmjena:
 	@RequestMapping(value = "/save-bank", method = RequestMethod.POST)
-	public ModelAndView saveBank(@ModelAttribute Bank bank)
+	public ModelAndView saveBank(@Valid @ModelAttribute Bank bank, BindingResult bindingResult)
 	{
+		if (bindingResult.hasErrors())
+		{
+			ModelAndView model = new ModelAndView("Bank/Edit");
+			model.addObject("bank", bank);
+			return model;
+		}
+		
 		if (bank.getBankId() == 0)
 		{
 			// New:

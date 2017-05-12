@@ -23,3 +23,9 @@ textarea {
     max-width: 280px;
 }
 
+
+.error {
+	color: #e43430;
+    display: inline-block;
+    vertical-align: middle;
+}

@@ -10,12 +10,14 @@
 				<div class="form-group">
 					<form:label path="bankName">Bank Name:</form:label>
 					<form:input path="bankName" class="form-control" />
+					<form:errors path="bankName" class="error" />
 				</div>
 			</div>
 			<div class="col-xs-3">
 				<div class="form-group">
 					<form:label path="status">Status:</form:label>
 					<form:input path="status" class="form-control" />
+					<form:errors path="status" class="error" />
 				</div>
 			</div>
 		</div>
@@ -24,18 +26,21 @@
 				<div class="form-group">
 					<form:label path="bin">BIN:</form:label>
 					<form:input path="bin" class="form-control" />
+					<form:errors path="bin" class="error" />
 				</div>
 			</div>
 			<div class="col-xs-3">
 				<div class="form-group">
 					<form:label path="uppId">UPP ID:</form:label>
 					<form:input path="uppId" class="form-control" />
+					<form:errors path="uppId" class="error" />
 				</div>
 			</div>
 			<div class="col-xs-3">
 				<div class="form-group">
 					<form:label path="bamcardId">Bamcard ID:</form:label>
 					<form:input path="bamcardId" class="form-control" />
+					<form:errors path="bamcardId" class="error" />
 				</div>
 			</div>
 		</div>
