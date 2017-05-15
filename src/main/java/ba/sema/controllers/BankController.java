@@ -97,9 +97,10 @@ public class BankController
 	{
 		if (bindingResult.hasErrors())
 		{
-			ModelAndView model = new ModelAndView("Bank/Edit");
-			model.addObject("bank", bank);
-			return model;
+//			ModelAndView model = new ModelAndView("Bank/Edit");
+//			model.addObject("bank", bank);
+//			return model;
+			return new ModelAndView("Bank/Edit");
 		}
 		
 		if (bank.getBankId() == 0)

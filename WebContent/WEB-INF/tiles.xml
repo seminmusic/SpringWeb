@@ -13,6 +13,7 @@
        <!-- CSS Core -->
        <put-list-attribute name="css">
            <add-attribute value="/css/bootstrap.min.css" />
+           <add-attribute value="/js/bootstrapValidator/css/bootstrapValidator.min.css" />
            <add-attribute value="/css/font-awesome.min.css" />
            <add-attribute value="/css/custom/site.css" />
        </put-list-attribute>
@@ -20,6 +21,7 @@
        <put-list-attribute name="js">
            <add-attribute value="/js/jquery-3.1.1.min.js" />
            <add-attribute value="/js/bootstrap.min.js" />
+           <add-attribute value="/js/bootstrapValidator/js/bootstrapValidator.min.js" />
        </put-list-attribute>
    </definition>
    
@@ -42,6 +44,10 @@
    <definition name="Bank/Edit" extends="Layout.Default">
        <put-attribute name="title" value="BamPay Administration | New / Edit Bank" />
        <put-attribute name="body"  value="/WEB-INF/Views/Bank/Edit.jsp" />
+       <!-- Dodatno JS -->
+       <put-list-attribute name="js" inherit="true">
+           <add-attribute value="/js/custom/bank.edit.js" />
+       </put-list-attribute>
    </definition>
    
 </tiles-definitions>

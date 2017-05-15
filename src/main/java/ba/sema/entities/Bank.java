@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotBlank;
-import org.hibernate.validator.constraints.NotEmpty;
+//import org.hibernate.validator.constraints.NotEmpty;
 
 
 @SuppressWarnings("serial")
@@ -29,6 +29,7 @@ public class Bank implements Serializable
 	//@NotNull(message = "Obavezan unos naziva banke")  // Ovaj ne provjerava prazne stringove
 	//@NotEmpty(message = "Obavezan unos naziva banke")  // Validno i kad su samo spaceovi
 	@NotBlank(message = "Naziv banke ne može biti prazan")  // Not null and the trimmed length is greater than 0
+	@Size(max = 100, message = "Naziv banke može imati najviše {max} karaktera")
 	private String bankName;
 	
 	@Column
@@ -37,9 +38,11 @@ public class Bank implements Serializable
 	
 	@Column
 	@NotBlank(message = "BIN ne može biti prazan")
+	@Size(max = 10, message = "BIN može imati najviše {max} karaktera")
 	private String bin;
 	
 	@Column(name = "uppid")
+	@Size(max = 10, message = "UPP ID može imati najviše {max} karaktera")
 	private String uppId;
 	
 	@Column(name = "bamcardid")
