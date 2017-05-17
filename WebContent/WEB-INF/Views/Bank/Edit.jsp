@@ -16,7 +16,7 @@
 				<spring:bind path="bankName">
 					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
 						<form:label path="bankName" class="control-label">Bank Name:</form:label>
-						<form:input path="bankName" class="form-control" type="text"
+						<form:input path="bankName" class="form-control" type="text" autocomplete="off"
 									data-bv-notempty="true"
 									data-bv-notempty-message="Obavezan unos naziva"
 									data-bv-stringlength="true"
@@ -33,7 +33,7 @@
 				<spring:bind path="status">
 					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
 						<form:label path="status" class="control-label">Status:</form:label>
-						<form:input path="status" class="form-control" type="text" 
+						<form:input path="status" class="form-control" type="text" autocomplete="off"
 									data-bv-notempty="true"
 									data-bv-notempty-message="Obavezan unos statusa"
 									data-bv-integer="true"
@@ -51,7 +51,7 @@
 				<spring:bind path="bin">
 					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
 						<form:label path="bin" class="control-label">BIN:</form:label>
-						<form:input path="bin" class="form-control" type="text"
+						<form:input path="bin" class="form-control" type="text" autocomplete="off"
 									data-bv-notempty="true"
 									data-bv-notempty-message="Obavezan unos BIN"
 									data-bv-stringlength="true"
@@ -68,7 +68,7 @@
 				<spring:bind path="uppId">
 					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
 						<form:label path="uppId" class="control-label">UPP ID:</form:label>
-						<form:input path="uppId" class="form-control" type="text" 
+						<form:input path="uppId" class="form-control" type="text" autocomplete="off"
 									data-bv-stringlength="true"
 									data-bv-stringlength-max="10"
                 					data-bv-stringlength-message="Maksimalno 10 karaktera" />
@@ -83,7 +83,7 @@
 				<spring:bind path="bamcardId">
 					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
 						<form:label path="bamcardId" class="control-label">Bamcard ID:</form:label>
-						<form:input path="bamcardId" class="form-control" type="text" 
+						<form:input path="bamcardId" class="form-control" type="text" autocomplete="off"
 									data-bv-integer="true"
 									data-bv-integer-message="Unesite cijeli broj" />
 						<c:if test="${status.error}">

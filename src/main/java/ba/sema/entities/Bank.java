@@ -1,7 +1,5 @@
 package ba.sema.entities;
 
-import java.io.Serializable;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,15 +13,14 @@ import org.hibernate.validator.constraints.NotBlank;
 //import org.hibernate.validator.constraints.NotEmpty;
 
 
-@SuppressWarnings("serial")
 @Entity
 @Table(name = "banks")
-public class Bank implements Serializable
+public class Bank
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "bank_id")
-	private int bankId;
+	private Integer bankId;
 	
 	@Column(name = "bankname")
 	//@NotNull(message = "Obavezan unos naziva banke")  // Ovaj ne provjerava prazne stringove
@@ -49,12 +46,11 @@ public class Bank implements Serializable
 	private Integer bamcardId;
 	
 	
-	public int getBankId()
+	public Integer getBankId()
 	{
 		return bankId;
 	}
-
-	public void setBankId(int bankId)
+	public void setBankId(Integer bankId)
 	{
 		this.bankId = bankId;
 	}
@@ -63,7 +59,6 @@ public class Bank implements Serializable
 	{
 		return bankName;
 	}
-
 	public void setBankName(String bankName)
 	{
 		this.bankName = bankName;
@@ -73,7 +68,6 @@ public class Bank implements Serializable
 	{
 		return status;
 	}
-
 	public void setStatus(Integer status)
 	{
 		this.status = status;
@@ -83,7 +77,6 @@ public class Bank implements Serializable
 	{
 		return bin;
 	}
-
 	public void setBin(String bin)
 	{
 		this.bin = bin;
@@ -93,7 +86,6 @@ public class Bank implements Serializable
 	{
 		return uppId;
 	}
-
 	public void setUppId(String uppId)
 	{
 		this.uppId = uppId;
@@ -103,7 +95,6 @@ public class Bank implements Serializable
 	{
 		return bamcardId;
 	}
-
 	public void setBamcardId(Integer bamcardId)
 	{
 		this.bamcardId = bamcardId;

@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ba.sema.entities.Bank;
+import ba.sema.entities.User;
 import ba.sema.services.BankService;
+import ba.sema.services.UserService;
 
 
 @Controller
@@ -29,6 +31,8 @@ public class BankController
 	
 	@Autowired
 	private BankService bankService;
+	@Autowired
+	private UserService userService;
 	
 	public BankController()
 	{
@@ -48,6 +52,21 @@ public class BankController
 	@RequestMapping(value = "/new-bank", method = RequestMethod.GET)
 	public ModelAndView newBank(ModelAndView model)
 	{
+		// TEST
+		try
+		{
+			User user = new User();
+			user.setTelephoneNumber("+0000000");
+			user.setRegistrationCode("99");
+			user.setRegistrationCodeExpiration(new java.sql.Timestamp(System.currentTimeMillis()));
+			userService.addUser(user);
+		}
+		catch (Exception e)
+		{
+			e.printStackTrace();
+		}
+		// TEST
+		
 		Bank bank = new Bank();
 		model.addObject("bank", bank);
 		model.setViewName("Bank/Edit");
