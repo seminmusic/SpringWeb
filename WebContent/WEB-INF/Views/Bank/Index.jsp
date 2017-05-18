@@ -21,19 +21,19 @@
 			</tr>
 		</thead>
 		<tbody>
-			<c:forEach var="bank" items="${banks}">
+			<c:forEach var="bankModel" items="${bankModels}">
 				<tr>
-					<td>${bank.bankId}</td>
-					<td>${bank.bankName}</td>
-					<td>${bank.status}</td>
-					<td>${bank.bin}</td>
-					<td>${bank.uppId}</td>
-					<td>${bank.bamcardId}</td>
+					<td>${bankModel.bankId}</td>
+					<td>${bankModel.bankName}</td>
+					<td>${bankModel.status}</td>
+					<td>${bankModel.bin}</td>
+					<td>${bankModel.uppId}</td>
+					<td>${bankModel.bamcardId}</td>
 					<td>
-						<a href="edit-bank?bankId=${bank.bankId}" style="float: left">
+						<a href="edit-bank?bankId=${bankModel.bankId}" style="float: left">
 							<i class="fa fa-pencil" style="color: blue"></i> Edit Bank
 						</a>
-						<a href="delete-bank?bankId=${bank.bankId}" style="float: right">
+						<a href="delete-bank?bankId=${bankModel.bankId}" style="float: right">
 							<i class="fa fa-times" style="color: red"></i> Delete Bank
 						</a>
 					</td>

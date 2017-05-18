@@ -2,13 +2,14 @@ package ba.sema.services;
 
 import java.util.List;
 
-import ba.sema.entities.Bank;
+import ba.sema.models.bank.BankModel;
+import ba.sema.models.bank.NewBankModel;
 
 public interface BankService
 {
-	public void addBank(Bank bank);
-	public List<Bank> getAllBanks();
+	public void addBank(NewBankModel model);
+	public List<BankModel> getAllBanks();
 	public void deleteBank(int bankId);
-	public Bank updateBank(Bank bank);
-	public Bank getBank(int bankId);
+	public void updateBank(NewBankModel model);
+	public NewBankModel getBank(int bankId);
 }

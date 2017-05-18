@@ -1,5 +1,6 @@
 package ba.sema.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 import ba.sema.dao.BankDAO;
 import ba.sema.entities.Bank;
+import ba.sema.models.bank.BankModel;
+import ba.sema.models.bank.NewBankModel;
 
 @Service
 @Transactional
@@ -22,16 +25,38 @@ public class BankServiceImpl implements BankService
 	
 	@Override
 	@Transactional
-	public void addBank(Bank bank)
+	public void addBank(NewBankModel model)
 	{
+		Bank bank = new Bank();
+		// bank.setBankId(model.getBankId());
+		bank.setBankName(model.getBankName());
+		bank.setStatus(model.getStatus());
+		bank.setBin(model.getBin());
+		bank.setUppId(model.getUppId());
+		bank.setBamcardId(model.getBamcardId());
+		//
 		bankDAO.addBank(bank);
 	}
 
 	@Override
 	@Transactional
-	public List<Bank> getAllBanks()
+	public List<BankModel> getAllBanks()
 	{
-		return bankDAO.getAllBanks();
+		List<Bank> banks = bankDAO.getAllBanks();
+		List<BankModel> models = new ArrayList<BankModel>();
+		for (Bank bank : banks)
+		{
+			BankModel model = new BankModel();
+			model.setBankId(bank.getBankId());
+			model.setBankName(bank.getBankName());
+			model.setStatus(bank.getStatus());
+			model.setBin(bank.getBin());
+			model.setUppId(bank.getUppId());
+			model.setBamcardId(bank.getBamcardId());
+			//
+			models.add(model);
+		}
+		return models;
 	}
 
 	@Override
@@ -42,14 +67,30 @@ public class BankServiceImpl implements BankService
 	}
 
 	@Override
-	public Bank updateBank(Bank bank)
+	public void updateBank(NewBankModel model)
 	{
-		return bankDAO.updateBank(bank);
+		Bank bank = new Bank();
+		bank.setBankId(model.getBankId());
+		bank.setBankName(model.getBankName());
+		bank.setStatus(model.getStatus());
+		bank.setBin(model.getBin());
+		bank.setUppId(model.getUppId());
+		bank.setBamcardId(model.getBamcardId());
+		//
+		bankDAO.updateBank(bank);
 	}
 
 	@Override
-	public Bank getBank(int bankId)
+	public NewBankModel getBank(int bankId)
 	{
-		return bankDAO.getBank(bankId);
+		Bank bank = bankDAO.getBank(bankId);
+		NewBankModel model = new NewBankModel();
+		model.setBankId(bank.getBankId());
+		model.setBankName(bank.getBankName());
+		model.setStatus(bank.getStatus());
+		model.setBin(bank.getBin());
+		model.setUppId(bank.getUppId());
+		model.setBamcardId(bank.getBamcardId());
+		return model;
 	}
 }

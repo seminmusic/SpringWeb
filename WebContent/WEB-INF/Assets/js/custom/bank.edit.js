@@ -1,6 +1,6 @@
 $(function() {
 	$(".server-side-error").remove();
-    var $bankForma = $("#bank");
+    var $bankForma = $("#newBankModel");
     // Initialise bootstrap validator:
     $bankForma.bootstrapValidator();
 });

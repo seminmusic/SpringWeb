@@ -1,35 +1,13 @@
-package ba.sema.entities;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+package ba.sema.models.bank;
 
 
-@Entity
-@Table(name = "banks")
-public class Bank
+public class BankModel
 {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "bank_id")
 	private Integer bankId;
-	
-	@Column(name = "bankname")
 	private String bankName;
-	
-	@Column
 	private Short status;
-	
-	@Column
 	private String bin;
-	
-	@Column(name = "uppid")
 	private String uppId;
-	
-	@Column(name = "bamcardid")
 	private Integer bamcardId;
 	
 	
@@ -41,7 +19,7 @@ public class Bank
 	{
 		this.bankId = bankId;
 	}
-
+	
 	public String getBankName()
 	{
 		return bankName;
@@ -50,7 +28,7 @@ public class Bank
 	{
 		this.bankName = bankName;
 	}
-
+	
 	public Short getStatus()
 	{
 		return status;
@@ -59,7 +37,7 @@ public class Bank
 	{
 		this.status = status;
 	}
-
+	
 	public String getBin()
 	{
 		return bin;
@@ -68,7 +46,7 @@ public class Bank
 	{
 		this.bin = bin;
 	}
-
+	
 	public String getUppId()
 	{
 		return uppId;
@@ -77,7 +55,7 @@ public class Bank
 	{
 		this.uppId = uppId;
 	}
-
+	
 	public Integer getBamcardId()
 	{
 		return bamcardId;
@@ -85,5 +63,5 @@ public class Bank
 	public void setBamcardId(Integer bamcardId)
 	{
 		this.bamcardId = bamcardId;
-	}
+	}	
 }

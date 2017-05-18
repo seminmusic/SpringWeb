@@ -5,7 +5,7 @@
 
 <h1>New / Edit Bank</h1>
 <div>
-	<form:form action="save-bank" method="post" modelAttribute="bank"
+	<form:form action="save-bank" method="post" modelAttribute="newBankModel"
 			   data-bv-message="Vrijednost nije validna"
     		   data-bv-icon-valid="glyphicon glyphicon-ok"
     		   data-bv-icon-invalid="glyphicon glyphicon-remove"
