@@ -23,3 +23,10 @@ textarea {
     max-width: 280px;
 }
 
+.navbar-user {
+    margin-right: 0;
+}
+
+.navbar-user .navbar-text {
+	
+}

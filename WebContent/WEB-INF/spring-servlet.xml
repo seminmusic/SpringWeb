@@ -82,13 +82,26 @@
     							http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
     							http://www.springframework.org/schema/security 
     							http://www.springframework.org/schema/security/spring-security-4.0.xsd">
-	    <http auto-config="true">
-	        <intercept-url pattern="/" access="hasRole('ADMIN')" />
+    	<http pattern="/css/**" security="none" />
+	    <http pattern="/js/**" security="none" />
+	    <http pattern="/fonts/**" security="none" />
+	    <http use-expressions="true">
+	        <!-- <intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" /> -->
+	        <!-- <intercept-url pattern="/css/**" access="permitAll" /> -->
+	        <!-- <intercept-url pattern="/js/**" access="permitAll" /> -->
+	        
+	        <intercept-url pattern="/login/**" access="permitAll" />
+	        <intercept-url pattern="/**" access="isAuthenticated()" />
+	        
 	        <form-login login-page="/login"
 	                    username-parameter="username"
 	                    password-parameter="password"
-	                    default-target-url="/banks" always-use-default-target="true" />
+	                    default-target-url="/" always-use-default-target="false" />
 	        <csrf />
+	        <!--
+	        <logout logout-url="/login/odjava"
+	        		logout-success-url="/login/prijava/" />
+	        -->
 	    </http>
 	    <authentication-manager >
 	        <authentication-provider user-service-ref="customUserDetailsService"/>
