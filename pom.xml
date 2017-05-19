@@ -9,6 +9,7 @@
 	<!-- Specifying the Versions of Spring, Hiberante, MySQL, etc. -->
 	<properties>
 		<spring.version>4.1.5.RELEASE</spring.version>
+		<springsecurity.version>4.0.1.RELEASE</springsecurity.version>
 		<hibernate.version>4.3.8.Final</hibernate.version>
 		<postgresql.version>9.1-901.jdbc4</postgresql.version>
 		<junit-version>4.11</junit-version>
@@ -52,6 +53,17 @@
 			<version>${spring.version}</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Spring Security dependencies -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${springsecurity.version}</version>
+        </dependency>
 		<!-- Hibernate 4 dependencies -->
 		<dependency>
             <groupId>org.hibernate</groupId>

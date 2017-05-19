@@ -5,6 +5,23 @@
 <tiles-definitions>
 
    <!-- Layout Templates -->
+   <definition name="Layout.Login" template="/WEB-INF/Tiles/layouts/_login.jsp">
+       <put-attribute name="title"  value="" />
+       <put-attribute name="body"   value="" />
+       <!-- CSS Core -->
+       <put-list-attribute name="css">
+           <add-attribute value="/css/bootstrap.min.css" />
+           <add-attribute value="/js/bootstrapValidator/css/bootstrapValidator.min.css" />
+           <add-attribute value="/css/font-awesome.min.css" />
+           <add-attribute value="/css/custom/login.css" />
+       </put-list-attribute>
+       <!-- JS Core -->
+       <put-list-attribute name="js">
+           <add-attribute value="/js/jquery-3.1.1.min.js" />
+           <add-attribute value="/js/bootstrap.min.js" />
+           <add-attribute value="/js/bootstrapValidator/js/bootstrapValidator.min.js" />
+       </put-list-attribute>
+   </definition>
    <definition name="Layout.Default" template="/WEB-INF/Tiles/layouts/_default.jsp">
        <put-attribute name="title"  value="" />
        <put-attribute name="menu"   value="/WEB-INF/Tiles/fragments/_menu.jsp" />
@@ -23,6 +40,12 @@
            <add-attribute value="/js/bootstrap.min.js" />
            <add-attribute value="/js/bootstrapValidator/js/bootstrapValidator.min.js" />
        </put-list-attribute>
+   </definition>
+   
+   <!-- _Login/Index page -->
+   <definition name="_Login/Index" extends="Layout.Login">
+       <put-attribute name="title" value="BamPay Administration | Login" />
+       <put-attribute name="body"  value="/WEB-INF/Views/_Login/Index.jsp" />
    </definition>
    
    <!-- Home/Index page -->
