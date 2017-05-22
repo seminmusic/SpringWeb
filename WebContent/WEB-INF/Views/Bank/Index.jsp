@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <h1>Bank List</h1>
 <div style="margin:20px 0">
-	<a href="new-bank" class="btn btn-success">
+	<a href="${pageContext.request.contextPath}/banks/new-bank" class="btn btn-success">
 		<i class="fa fa-plus"></i>&nbsp; New Bank
 	</a>
 </div>
@@ -17,7 +18,9 @@
 				<th>BIN</th>
 				<th>UPP ID</th>
 				<th>Bamcard ID</th>
-				<th>Action</th>
+				<sec:authorize access="hasAnyAuthority('ADMIN', 'UNOS')">
+					<th>Action</th>
+				</sec:authorize>
 			</tr>
 		</thead>
 		<tbody>
@@ -29,14 +32,16 @@
 					<td>${bankModel.bin}</td>
 					<td>${bankModel.uppId}</td>
 					<td>${bankModel.bamcardId}</td>
-					<td>
-						<a href="edit-bank?bankId=${bankModel.bankId}" style="float: left">
-							<i class="fa fa-pencil" style="color: blue"></i> Edit Bank
-						</a>
-						<a href="delete-bank?bankId=${bankModel.bankId}" style="float: right">
-							<i class="fa fa-times" style="color: red"></i> Delete Bank
-						</a>
-					</td>
+					<sec:authorize access="hasAnyAuthority('ADMIN', 'UNOS')">
+						<td>
+							<a href="${pageContext.request.contextPath}/banks/edit-bank?bankId=${bankModel.bankId}" style="float:left">
+								<i class="fa fa-pencil" style="color: blue"></i> Edit Bank
+							</a>
+							<a href="${pageContext.request.contextPath}/banks/delete-bank?bankId=${bankModel.bankId}" style="float:right">
+								<i class="fa fa-times" style="color: red"></i> Delete Bank
+							</a>
+						</td>
+					</sec:authorize>
 				</tr>
 			</c:forEach>
 		</tbody>

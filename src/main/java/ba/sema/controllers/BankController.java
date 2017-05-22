@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -23,6 +24,7 @@ import ba.sema.services.BankService;
 
 @Controller
 @RequestMapping(value = "/banks")
+@PreAuthorize("isAuthenticated()")
 public class BankController
 {
 	@Autowired
@@ -39,6 +41,7 @@ public class BankController
 	
 	// GET - Nova banka:
 	@RequestMapping(value = "/new-bank", method = RequestMethod.GET)
+	@PreAuthorize("hasAnyAuthority('ADMIN', 'UNOS')")
 	public ModelAndView newBank(ModelAndView model)
 	{
 		NewBankModel bank = new NewBankModel();
@@ -49,6 +52,7 @@ public class BankController
 	
 	// GET - Izmjena banke:
 	@RequestMapping(value = "/edit-bank", method = RequestMethod.GET)
+	@PreAuthorize("hasAnyAuthority('ADMIN', 'UNOS')")
 	public ModelAndView editBank(@RequestParam Map<String, String> sviParametri)
 	{
 		NewBankModel bank = bankService.getBank(Integer.parseInt(sviParametri.get("bankId")));
@@ -59,6 +63,7 @@ public class BankController
 	
 	// POST - Novi ili izmjena:
 	@RequestMapping(value = "/save-bank", method = RequestMethod.POST)
+	@PreAuthorize("hasAnyAuthority('ADMIN', 'UNOS')")
 	public ModelAndView saveBank(@Valid @ModelAttribute("newBankModel") NewBankModel bank, BindingResult bindingResult)
 	{
 		if (bindingResult.hasErrors())
@@ -81,6 +86,7 @@ public class BankController
 	
 	// GET - Brisanje banke:
 	@RequestMapping(value = "/delete-bank", method = RequestMethod.GET)
+	@PreAuthorize("hasAuthority('ADMIN')")
 	public ModelAndView deleteBank(HttpServletRequest request)
 	{
 		int bankId = Integer.parseInt(request.getParameter("bankId"));

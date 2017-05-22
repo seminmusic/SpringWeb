@@ -14,8 +14,6 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
-import ba.sema.enums.StatusKorisnika;
-
 
 @Entity
 @Table(name = "_login_korisnik")
@@ -42,7 +40,7 @@ public class _LoginKorisnik
     private String email;
     
     @Column(nullable = false)
-    private String status = StatusKorisnika.AKTIVAN.getStatus();
+    private String status;
     
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable

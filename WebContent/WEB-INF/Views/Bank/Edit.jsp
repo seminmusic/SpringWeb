@@ -5,7 +5,7 @@
 
 <h1>New / Edit Bank</h1>
 <div>
-	<form:form action="save-bank" method="post" modelAttribute="newBankModel"
+	<form:form action="${pageContext.request.contextPath}/banks/save-bank" method="post" modelAttribute="newBankModel"
 			   data-bv-message="Vrijednost nije validna"
     		   data-bv-icon-valid="glyphicon glyphicon-ok"
     		   data-bv-icon-invalid="glyphicon glyphicon-remove"
@@ -99,7 +99,7 @@
 				<button type="submit" class="btn btn-success" style="margin-right:10px">
 					<i class="fa fa-check"></i>&nbsp; Save
 				</button>
-				<button type="button" class="btn btn-default" onclick="window.location.href='list'">
+				<button type="button" class="btn btn-default" onclick="window.location.href='${pageContext.request.contextPath}/banks/list'">
 					<i class="fa fa-reply"></i>&nbsp; Cancel
 				</button>
 			</div>

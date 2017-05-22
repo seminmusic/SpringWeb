@@ -7,8 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import ba.sema.enums.TipRole;
-
 
 @Entity
 @Table(name = "_login_rola")
@@ -20,7 +18,7 @@ public class _LoginRola
     private Integer rolaId;
 	
     @Column(name = "nazivrole", length = 15, unique = true, nullable = false)
-    private String nazivRole = TipRole.STANDARD.getTipRole();
+    private String nazivRole;
     
     
 	public Integer getRolaId()

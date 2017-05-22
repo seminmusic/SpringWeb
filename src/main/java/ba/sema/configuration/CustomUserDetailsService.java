@@ -50,7 +50,7 @@ public class CustomUserDetailsService implements UserDetailsService
 		
         for (_LoginRola rola : korisnik.getRoleKorisnika())
         {
-            authorities.add(new SimpleGrantedAuthority("ROLE_" + rola.getNazivRole()));
+            authorities.add(new SimpleGrantedAuthority(rola.getNazivRole()));
         }
         
         System.out.println("Role korisnika: " + authorities);

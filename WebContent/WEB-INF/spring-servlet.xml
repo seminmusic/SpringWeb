@@ -85,13 +85,10 @@
     	<http pattern="/css/**" security="none" />
 	    <http pattern="/js/**" security="none" />
 	    <http pattern="/fonts/**" security="none" />
+	    
+	    <global-method-security pre-post-annotations="enabled" />
+	    
 	    <http use-expressions="true">
-	        <!-- <intercept-url pattern="/" access="hasRole('ROLE_ADMIN')" /> -->
-	        <!-- <intercept-url pattern="/css/**" access="permitAll" /> -->
-	        <!-- <intercept-url pattern="/js/**" access="permitAll" /> -->
-	        
-	        <intercept-url pattern="/login/**" access="permitAll" />
-	        <intercept-url pattern="/**" access="isAuthenticated()" />
 	        
 	        <form-login login-page="/login"
 	                    username-parameter="username"
@@ -99,9 +96,28 @@
 	                    default-target-url="/" always-use-default-target="false" />
 	        <csrf />
 	        <!--
-	        <logout logout-url="/login/odjava"
-	        		logout-success-url="/login/prijava/" />
+	        <logout logout-url="/login/odjava" logout-success-url="/login/prijava/" />
 	        -->
+	        
+	        <!--
+	        <intercept-url pattern="/login/**" access="permitAll" />
+	        <intercept-url pattern="/" access="permitAll" />
+	        -->
+	        
+	        <!--
+			<intercept-url pattern="/banks/list/**" access="hasAnyRole('ADMIN', 'UNOS', 'PREGLED', 'READ')" />
+			<intercept-url pattern="/banks/**" access="hasAnyRole('ADMIN', 'UNOS')" />
+			-->
+			
+			<!--
+			<intercept-url pattern="/banks/list/**" access="isAuthenticated()" />
+			<intercept-url pattern="/banks/**" access="hasAnyAuthority('ADMIN', 'UNOS')" />
+			<intercept-url pattern="/**" access="denyAll" />
+			-->
+			<!--
+			<intercept-url pattern="/**" access="isAuthenticated()" />
+			-->
+	        
 	    </http>
 	    <authentication-manager >
 	        <authentication-provider user-service-ref="customUserDetailsService"/>
