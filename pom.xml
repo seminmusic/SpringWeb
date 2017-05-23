@@ -143,6 +143,12 @@
     		<artifactId>hibernate-validator</artifactId>
     		<version>5.3.5.Final</version>
 		</dependency>
+		<!-- Reflections -->
+		<dependency>
+			<groupId>org.reflections</groupId>
+			<artifactId>reflections</artifactId>
+			<version>0.9.10</version>
+		</dependency>
 	</dependencies>
 
 	<build>
