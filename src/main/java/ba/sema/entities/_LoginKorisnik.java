@@ -21,33 +21,33 @@ public class _LoginKorisnik
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "korisnik_id")
+	@Column(name = "korisnik_id", nullable = false, unique = true)
     private Integer korisnikId;
 	
-	@Column(nullable = false, unique = true)
+	@Column(nullable = false, unique = true, length = 30)
     private String username;
 	
-    @Column(nullable = false)
+    @Column(nullable = false, length = 50)
     private String password;
     
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String ime;
     
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String prezime;
     
-    @Column
+    @Column(length = 30)
     private String email;
     
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private String status;
     
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
     (
     	name = "_login_korisnik_rola", 
-    	joinColumns = { @JoinColumn(name = "id_korisnika") }, 
-    	inverseJoinColumns = { @JoinColumn(name = "id_role") }
+    	joinColumns = { @JoinColumn(name = "id_korisnika", nullable = false) }, 
+    	inverseJoinColumns = { @JoinColumn(name = "id_role", nullable = false) }
     )
     private Set<_LoginRola> roleKorisnika = new HashSet<_LoginRola>();
     

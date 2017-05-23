@@ -1,12 +1,16 @@
 package ba.sema.entities;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.DynamicInsert;
@@ -19,13 +23,13 @@ public class User
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "user_id")
+	@Column(name = "user_id", nullable = false, unique = true)
 	private Integer userId;
 	
 	@Column(name = "applicationid", length = 50)
 	private String applicationId;
 	
-	@Column(name = "telephonenumber", length = 15, nullable = false)
+	@Column(name = "telephonenumber", nullable = false, length = 15)
 	private String telephoneNumber;
 	
 	@Column(name = "activationdate")
@@ -37,8 +41,7 @@ public class User
 	@Column(name = "deactivationdate")
 	private Timestamp deactivationDate;
 	
-	//@Column(nullable = false, columnDefinition = "smallint not null default 0")
-	@Column(nullable = false)
+	@Column(nullable = false)  // @Column(nullable = false, columnDefinition = "smallint not null default 0")
 	private Short status;
 	
 	@Column(name = "pinhash")
@@ -47,15 +50,17 @@ public class User
 	@Column(name = "notificationstoken")
 	private String notificationsToken;
 	
-	//@Column(name = "loginattempts", nullable = false, columnDefinition = "smallint not null default 0")
-	@Column(name = "loginattempts", nullable = false)
+	@Column(name = "loginattempts", nullable = false)  // @Column(name = "loginattempts", nullable = false, columnDefinition = "smallint not null default 0")
 	private Short loginAttempts;
 	
-	@Column(name = "registrationcode", length = 20, nullable = false)
+	@Column(name = "registrationcode", nullable = false, length = 20)
 	private String registrationCode;
 	
 	@Column(name = "registrationcodeexpiration", nullable = false)
 	private Timestamp registrationCodeExpiration;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "primaryKey.user")
+	private Set<BankUser> banksUsers = new HashSet<BankUser>();
 	
 	
 	public Integer getUserId()
@@ -164,5 +169,14 @@ public class User
 	public void setRegistrationCodeExpiration(Timestamp registrationCodeExpiration)
 	{
 		this.registrationCodeExpiration = registrationCodeExpiration;
+	}
+	
+	public Set<BankUser> getBanksUsers()
+	{
+		return banksUsers;
+	}
+	public void setBanksUsers(Set<BankUser> banksUsers)
+	{
+		this.banksUsers = banksUsers;
 	}
 }

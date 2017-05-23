@@ -1,36 +1,47 @@
 package ba.sema.entities;
 
+import java.util.HashSet;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.DynamicInsert;
 
 
 @Entity
 @Table(name = "banks")
+@DynamicInsert(true)
 public class Bank
 {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "bank_id")
+	@Column(name = "bank_id", nullable = false, unique = true)
 	private Integer bankId;
 	
-	@Column(name = "bankname")
+	@Column(name = "bankname", nullable = false, length = 100)
 	private String bankName;
 	
-	@Column
+	@Column(nullable = false)
 	private Short status;
 	
-	@Column
+	@Column(nullable = false, unique = true, length = 10)
 	private String bin;
 	
-	@Column(name = "uppid")
+	@Column(name = "uppid", length = 10)
 	private String uppId;
 	
 	@Column(name = "bamcardid")
 	private Integer bamcardId;
+	
+	@OneToMany(fetch = FetchType.LAZY, mappedBy = "primaryKey.bank")
+	private Set<BankUser> banksUsers = new HashSet<BankUser>();
 	
 	
 	public Integer getBankId()
@@ -85,5 +96,14 @@ public class Bank
 	public void setBamcardId(Integer bamcardId)
 	{
 		this.bamcardId = bamcardId;
+	}
+	
+	public Set<BankUser> getBanksUsers()
+	{
+		return banksUsers;
+	}
+	public void setBanksUsers(Set<BankUser> banksUsers)
+	{
+		this.banksUsers = banksUsers;
 	}
 }
