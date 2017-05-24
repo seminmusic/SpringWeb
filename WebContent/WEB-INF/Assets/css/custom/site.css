@@ -30,3 +30,7 @@ textarea {
 .navbar-user .navbar-text {
 	
 }
+
+pre {
+	white-space: pre-wrap;
+}

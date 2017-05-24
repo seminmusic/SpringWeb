@@ -96,7 +96,7 @@
 	                    default-target-url="/" always-use-default-target="false" />
 	        <csrf />
 	        <!--
-	        <logout logout-url="/login/odjava" logout-success-url="/login/prijava/" />
+	        <logout logout-url="/login/odjava" logout-success-url="/login/prijava/" delete-cookies="JSESSIONID" />
 	        -->
 	        
 	        <!--

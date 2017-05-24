@@ -21,7 +21,7 @@ public class _LoginController
 		return "_Login/Index";
 	}
 	
-	@RequestMapping(value = "/odjava", method = RequestMethod.GET)
+	@RequestMapping(value = "/odjava", method = RequestMethod.POST)
 	public String odjava(HttpServletRequest request, HttpServletResponse response)
 	{
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -29,6 +29,7 @@ public class _LoginController
         {
         	new SecurityContextLogoutHandler().logout(request, response, auth);
         }
+        System.out.println("ODJAVA KORISNIKA ...");
         // return "redirect:/login";
         return "redirect:/";
 	}

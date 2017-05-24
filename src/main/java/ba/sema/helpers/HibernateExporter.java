@@ -47,6 +47,12 @@ public class HibernateExporter
 		hibernateConfiguration = createHibernateConfig();
 	}
 	
+	public String[] getCreateQueries()
+	{
+		Dialect hibDialect = Dialect.getDialect(hibernateConfiguration.getProperties());
+		return hibernateConfiguration.generateSchemaCreationScript(hibDialect);
+	}
+	
 	public void export(OutputStream out, boolean generateCreateQueries, boolean generateDropQueries)
 	{
 		Dialect hibDialect = Dialect.getDialect(hibernateConfiguration.getProperties());

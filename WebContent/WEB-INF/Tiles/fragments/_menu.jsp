@@ -15,7 +15,13 @@
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav">
             	<sec:authorize access="hasAuthority('ADMIN')">
-            		<li><a href="${pageContext.request.contextPath}/admin">Admin</a></li>
+            		<li class="dropdown">
+          				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          				<ul class="dropdown-menu">
+            				<li><a href="${pageContext.request.contextPath}/admin">Index</a></li>
+            				<li><a href="${pageContext.request.contextPath}/admin/generate-ddl">Generate DDL</a></li>
+          				</ul>
+        			</li>
         		</sec:authorize>
                 <li>
                 	<a href="${pageContext.request.contextPath}/banks/list">Banks</a>
@@ -32,13 +38,16 @@
                     </li>
                 </c:if>
            		<c:if test="${pageContext.request.userPrincipal != null}">
+           			<form action="${logoutUrl}" id="logout-forma" method="post">
+        				<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+    				</form>
             		<li>
             			<p class="navbar-text">
                         	<i class="fa fa-user fa-fw"></i>&nbsp; Pozdrav <span style="font-style:italic">${pageContext.request.userPrincipal.name}</span>
                         </p>
                     </li>
                     <li>
-                    	<button type="button" class="btn btn-default btn-sm navbar-btn" onclick="location.href='${logoutUrl}'">
+                    	<button type="button" class="btn btn-default btn-sm navbar-btn" onclick="document.getElementById('logout-forma').submit()">
                         	<i class="fa fa-sign-out fa-fw"></i> Odjava
                         </button>
                     </li>
