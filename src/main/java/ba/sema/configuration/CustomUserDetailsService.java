@@ -13,18 +13,20 @@ import org.springframework.stereotype.Service;
 
 import ba.sema.entities._LoginKorisnik;
 import ba.sema.entities._LoginRola;
+import ba.sema.services._LoginService;
 
 
 @Service("customUserDetailsService")
 public class CustomUserDetailsService implements UserDetailsService
 {
 	@Autowired
-    private LoginService loginService;
+    private _LoginService loginService;
 	
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException
 	{
 		_LoginKorisnik korisnik = loginService.findByUsername(username);
+		
 		System.out.println(korisnik);
 		
 		if (korisnik == null)
@@ -53,7 +55,7 @@ public class CustomUserDetailsService implements UserDetailsService
             authorities.add(new SimpleGrantedAuthority(rola.getNazivRole()));
         }
         
-        System.out.println("Role korisnika: " + authorities);
+        System.out.println("Autorizacije (role) korisnika: " + authorities);
         return authorities;
     }
 }

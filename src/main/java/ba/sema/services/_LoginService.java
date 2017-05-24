@@ -1,8 +1,8 @@
-package ba.sema.configuration;
+package ba.sema.services;
 
 import ba.sema.entities._LoginKorisnik;
 
-public interface LoginDAO
+public interface _LoginService
 {
 	_LoginKorisnik findById(int id);
 	_LoginKorisnik findByUsername(String username);
