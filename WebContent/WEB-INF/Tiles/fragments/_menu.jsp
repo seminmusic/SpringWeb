@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <div class="navbar navbar-default navbar-fixed-top">
@@ -13,9 +14,11 @@
             <a href="${pageContext.request.contextPath}/" class="navbar-brand">BamPay Administration</a>
         </div>
         <div class="navbar-collapse collapse">
+        	<c:set var="requestURI" value="${requestScope['javax.servlet.forward.request_uri']}" />
+        	<c:set var="putanja" value="${fn:substring(requestURI, fn:length(pageContext.request.contextPath), fn:length(requestURI))}" />
             <ul class="nav navbar-nav">
             	<sec:authorize access="hasAuthority('ADMIN')">
-            		<li class="dropdown">
+            		<li class="dropdown ${fn:startsWith(putanja, '/admin') ? 'active' : ''}">
           				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
           				<ul class="dropdown-menu">
             				<li><a href="${pageContext.request.contextPath}/admin">Index</a></li>
@@ -23,7 +26,7 @@
           				</ul>
         			</li>
         		</sec:authorize>
-                <li>
+                <li class="${fn:startsWith(putanja, '/banks') ? 'active' : ''}">
                 	<a href="${pageContext.request.contextPath}/banks/list">Banks</a>
                 </li>
             </ul>
