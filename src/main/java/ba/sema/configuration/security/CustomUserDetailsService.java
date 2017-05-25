@@ -1,4 +1,4 @@
-package ba.sema.configuration;
+package ba.sema.configuration.security;
 
 import java.util.ArrayList;
 import java.util.List;
