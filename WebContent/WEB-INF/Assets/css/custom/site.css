@@ -34,3 +34,16 @@ textarea {
 pre {
 	white-space: pre-wrap;
 }
+
+.dropdown-menu .divider {
+	margin: 5px 0;
+}
+.dropdown-menu > li > a:focus, 
+.dropdown-menu > li > a:hover {
+	background-color: #e7e7e7;
+}
+
+
+.naslov-stranice {
+	
+}

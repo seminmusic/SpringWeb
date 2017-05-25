@@ -63,6 +63,11 @@
        <put-attribute name="title" value="BamPay Administration | Admin" />
        <put-attribute name="body"  value="/WEB-INF/Views/Admin/Index.jsp" />
    </definition>
+   <!-- Admin/ApplicationUsersAndRoles page -->
+   <definition name="Admin/ApplicationUsersAndRoles" extends="Layout.Default">
+       <put-attribute name="title" value="BamPay Administration | Application Users and Roles" />
+       <put-attribute name="body"  value="/WEB-INF/Views/Admin/ApplicationUsersAndRoles.jsp" />
+   </definition>
    <!-- Admin/GenerateDDL page -->
    <definition name="Admin/GenerateDDL" extends="Layout.Default">
        <put-attribute name="title" value="BamPay Administration | Generate DDL" />

@@ -17,15 +17,6 @@
         	<c:set var="requestURI" value="${requestScope['javax.servlet.forward.request_uri']}" />
         	<c:set var="putanja" value="${fn:substring(requestURI, fn:length(pageContext.request.contextPath), fn:length(requestURI))}" />
             <ul class="nav navbar-nav">
-            	<sec:authorize access="hasAuthority('ADMIN')">
-            		<li class="dropdown ${fn:startsWith(putanja, '/admin') ? 'active' : ''}">
-          				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
-          				<ul class="dropdown-menu">
-            				<li><a href="${pageContext.request.contextPath}/admin">Index</a></li>
-            				<li><a href="${pageContext.request.contextPath}/admin/generate-ddl">Generate DDL</a></li>
-          				</ul>
-        			</li>
-        		</sec:authorize>
                 <li class="${fn:startsWith(putanja, '/banks') ? 'active' : ''}">
                 	<a href="${pageContext.request.contextPath}/banks/list">Banks</a>
                 </li>
@@ -56,6 +47,20 @@
                     </li>
                 </c:if>
            	</ul>
+           	<sec:authorize access="hasAuthority('ADMIN')">
+	            <ul class="nav navbar-nav navbar-right">
+            		<li class="dropdown ${fn:startsWith(putanja, '/admin') ? 'active' : ''}">
+          				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
+          				<ul class="dropdown-menu">
+            				<li><a href="${pageContext.request.contextPath}/admin">Index</a></li>
+            				<li class="divider" role="separator"></li>
+            				<li><a href="${pageContext.request.contextPath}/admin/app-users-roles">Application Users and Roles</a></li>
+            				<li class="divider" role="separator"></li>
+            				<li><a href="${pageContext.request.contextPath}/admin/generate-ddl">Generate DDL</a></li>
+          				</ul>
+        			</li>
+	            </ul>
+            </sec:authorize>
         </div>
     </div>
 </div>

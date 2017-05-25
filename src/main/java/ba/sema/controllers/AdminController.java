@@ -20,6 +20,13 @@ public class AdminController
 		return "Admin/Index";
 	}
 	
+	@RequestMapping(value = "/app-users-roles", method = RequestMethod.GET)
+	public ModelAndView applicationUsersAndRoles()
+	{
+		ModelAndView model = new ModelAndView("Admin/ApplicationUsersAndRoles");
+		return model;
+	}
+	
 	@RequestMapping(value = "/generate-ddl", method = RequestMethod.GET)
 	public ModelAndView generateDDL()
 	{
