@@ -1,5 +1,6 @@
 package ba.sema.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import ba.sema.helpers.HibernateExporter;
+import ba.sema.models.admin.AppUsersRolesModel;
+import ba.sema.services.AppUsersRolesService;
 
 
 @Controller
@@ -14,6 +17,9 @@ import ba.sema.helpers.HibernateExporter;
 @PreAuthorize("hasAuthority('ADMIN')")
 public class AdminController
 {
+	@Autowired
+	private AppUsersRolesService appUsersRolesService;
+	
 	@RequestMapping(value = {"", "/"}, method = RequestMethod.GET)
 	public String index()
 	{
@@ -23,7 +29,12 @@ public class AdminController
 	@RequestMapping(value = "/app-users-roles", method = RequestMethod.GET)
 	public ModelAndView applicationUsersAndRoles()
 	{
+		AppUsersRolesModel data = new AppUsersRolesModel();
+		data.setUsers(appUsersRolesService.getUsers());
+		
 		ModelAndView model = new ModelAndView("Admin/ApplicationUsersAndRoles");
+		model.addObject("model", data);
+		
 		return model;
 	}
 	

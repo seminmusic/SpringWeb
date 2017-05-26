@@ -18,10 +18,6 @@ public class BankServiceImpl implements BankService
 {
 	@Autowired
 	private BankDAO bankDAO;
-	public void setBankDAO(BankDAO bankDAO)
-	{
-		this.bankDAO = bankDAO;
-	}
 	
 	@Override
 	@Transactional

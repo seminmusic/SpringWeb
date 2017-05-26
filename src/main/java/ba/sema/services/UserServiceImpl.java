@@ -13,10 +13,6 @@ public class UserServiceImpl implements UserService
 {
 	@Autowired
 	private UserDAO userDAO;
-	public void setUserDAO(UserDAO userDAO)
-	{
-		this.userDAO = userDAO;
-	}
 	
 	@Override
 	@Transactional

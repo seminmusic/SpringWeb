@@ -1,5 +1,8 @@
 package ba.sema.dao;
 
+import java.util.List;
+
+import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -28,5 +31,12 @@ public class _LoginKorisnikDAOImpl implements _LoginKorisnikDAO
 		// Initialize LAZY object:
 		// Hibernate.initialize(korisnik.getRoleKorisnika());
 		// return korisnik;
+	}
+
+	@Override
+	public List<_LoginKorisnik> sviLoginKorisnici()
+	{
+		List<_LoginKorisnik> lista = (List<_LoginKorisnik>)sessionFactory.getCurrentSession().createQuery("FROM _LoginKorisnik ORDER BY korisnikId").list();
+		return lista;
 	}
 }
