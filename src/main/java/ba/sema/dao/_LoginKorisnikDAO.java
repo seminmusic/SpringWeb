@@ -10,4 +10,5 @@ public interface _LoginKorisnikDAO
 	public _LoginKorisnik findByUsername(String username);
 	//
 	public List<_LoginKorisnik> sviLoginKorisnici();
+	public void updateUser(_LoginKorisnik korisnik);
 }

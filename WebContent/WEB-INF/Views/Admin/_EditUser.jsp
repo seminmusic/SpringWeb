@@ -19,10 +19,16 @@
 				<form:input path="username" class="form-control" type="text" autocomplete="off" placeholder="Username" />
 			</div>
 			<div style="float:right">
-				<button type="button" class="btn btn-sm btn-success" style="margin:2px 0;">
+				<button type="button" 
+						class="btn btn-sm btn-success" 
+						style="margin:2px 0;"
+						onclick="UpdateAppUser(this)">
 					<i class="fa fa-check"></i>&nbsp; Save
 				</button>
-				<button type="button" class="btn btn-sm btn-danger" style="margin:2px 0;">
+				<button type="button" 
+						class="btn btn-sm btn-danger" 
+						style="margin:2px 0;"
+						onclick="CancelUpdateAppUser(this)">
 					<i class="fa fa-times"></i>&nbsp; Cancel
 				</button>
 			</div>

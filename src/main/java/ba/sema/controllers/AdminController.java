@@ -1,11 +1,16 @@
 package ba.sema.controllers;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ba.sema.helpers.HibernateExporter;
@@ -49,6 +54,18 @@ public class AdminController
 		model.addObject("user", user);
 		
 		return model;
+	}
+	
+	@RequestMapping(value = "/app-users-roles/ajax/update-user", method = RequestMethod.POST)
+	@ResponseBody
+	public String updateUser(@Valid @ModelAttribute("user") EditAppUserModel user, BindingResult bindingResult)
+	{
+		if (bindingResult.hasErrors())
+		{
+			
+		}
+		appUsersRolesService.updateUser(user);
+		return "Sve OK";
 	}
 	
 	@RequestMapping(value = "/generate-ddl", method = RequestMethod.GET)

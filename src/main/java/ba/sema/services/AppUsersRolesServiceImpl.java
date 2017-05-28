@@ -58,6 +58,18 @@ public class AppUsersRolesServiceImpl implements AppUsersRolesService
 		model.setUsername(korisnik.getUsername());
 		return model;
 	}
+	
+	@Override
+	@Transactional
+	public void updateUser(EditAppUserModel model)
+	{
+		_LoginKorisnik korisnik = loginKorisnikDAO.findById(model.getKorisnikId());
+		korisnik.setIme(model.getIme());
+		korisnik.setPrezime(model.getPrezime());
+		korisnik.setEmail(model.getEmail());
+		korisnik.setUsername(model.getUsername());
+		loginKorisnikDAO.updateUser(korisnik);
+	}
 
 	@Override
 	@Transactional

@@ -39,4 +39,10 @@ public class _LoginKorisnikDAOImpl implements _LoginKorisnikDAO
 		List<_LoginKorisnik> lista = (List<_LoginKorisnik>)sessionFactory.getCurrentSession().createQuery("FROM _LoginKorisnik ORDER BY korisnikId").list();
 		return lista;
 	}
+	
+	@Override
+	public void updateUser(_LoginKorisnik korisnik)
+	{
+		sessionFactory.getCurrentSession().update(korisnik);
+	}
 }
