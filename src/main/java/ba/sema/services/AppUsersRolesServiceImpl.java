@@ -12,6 +12,7 @@ import ba.sema.entities._LoginKorisnik;
 import ba.sema.entities._LoginRola;
 import ba.sema.models.admin.AppRolesModel;
 import ba.sema.models.admin.AppUsersModel;
+import ba.sema.models.admin.EditAppUserModel;
 
 @Service
 @Transactional
@@ -42,6 +43,20 @@ public class AppUsersRolesServiceImpl implements AppUsersRolesService
 			modeli.add(model);
 		}
 		return modeli;
+	}
+	
+	@Override
+	@Transactional
+	public EditAppUserModel loadUserForEdit(int id)
+	{
+		_LoginKorisnik korisnik = loginKorisnikDAO.findById(id);
+		EditAppUserModel model = new EditAppUserModel();
+		model.setKorisnikId(id);
+		model.setIme(korisnik.getIme());
+		model.setPrezime(korisnik.getPrezime());
+		model.setEmail(korisnik.getEmail());
+		model.setUsername(korisnik.getUsername());
+		return model;
 	}
 
 	@Override

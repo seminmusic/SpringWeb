@@ -5,10 +5,12 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import ba.sema.helpers.HibernateExporter;
 import ba.sema.models.admin.AppUsersRolesModel;
+import ba.sema.models.admin.EditAppUserModel;
 import ba.sema.services.AppUsersRolesService;
 
 
@@ -34,6 +36,17 @@ public class AdminController
 		
 		ModelAndView model = new ModelAndView("Admin/ApplicationUsersAndRoles");
 		model.addObject("model", data);
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/app-users-roles/ajax/edit-user", method = RequestMethod.GET)
+	public ModelAndView editUser(@RequestParam("userId") int id)
+	{
+		EditAppUserModel user = appUsersRolesService.loadUserForEdit(id);
+		
+		ModelAndView model = new ModelAndView("Admin/_EditUser");
+		model.addObject("user", user);
 		
 		return model;
 	}

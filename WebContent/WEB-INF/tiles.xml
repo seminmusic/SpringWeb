@@ -58,21 +58,24 @@
        </put-list-attribute>
    </definition>
    
-   <!-- Admin/Index page -->
+   <!-- Admin Full Pages -->
    <definition name="Admin/Index" extends="Layout.Default">
        <put-attribute name="title" value="BamPay Administration | Admin" />
        <put-attribute name="body"  value="/WEB-INF/Views/Admin/Index.jsp" />
    </definition>
-   <!-- Admin/ApplicationUsersAndRoles page -->
    <definition name="Admin/ApplicationUsersAndRoles" extends="Layout.Default">
        <put-attribute name="title" value="BamPay Administration | Application Users and Roles" />
        <put-attribute name="body"  value="/WEB-INF/Views/Admin/ApplicationUsersAndRoles.jsp" />
+       <put-list-attribute name="js" inherit="true">
+           <add-attribute value="/js/custom/admin.applicationusersandroles.js" />
+       </put-list-attribute>
    </definition>
-   <!-- Admin/GenerateDDL page -->
    <definition name="Admin/GenerateDDL" extends="Layout.Default">
        <put-attribute name="title" value="BamPay Administration | Generate DDL" />
        <put-attribute name="body"  value="/WEB-INF/Views/Admin/GenerateDDL.jsp" />
    </definition>
+   <!-- Admin Partial Pages -->
+   <definition name="Admin/_EditUser" template="/WEB-INF/Views/Admin/_EditUser.jsp" />
    
    <!-- Bank/Index page -->
    <definition name="Bank/Index" extends="Layout.Default">
