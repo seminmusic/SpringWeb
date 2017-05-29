@@ -67,7 +67,7 @@
        <put-attribute name="title" value="BamPay Administration | Application Users and Roles" />
        <put-attribute name="body">
            <definition template="/WEB-INF/Views/Admin/ApplicationUsersAndRoles.jsp">
-               <put-attribute name="_AppUsers" value="/WEB-INF/Views/Admin/_AppUsers.jsp" />
+		       <put-attribute name="_AppUsers" type="definition" value="Admin/_AppUsers" />   <!-- <put-attribute name="_AppUsers" value="/WEB-INF/Views/Admin/_AppUsers.jsp" /> -->
            </definition>
        </put-attribute>
        <put-list-attribute name="js" inherit="true">
@@ -79,6 +79,7 @@
        <put-attribute name="body"  value="/WEB-INF/Views/Admin/GenerateDDL.jsp" />
    </definition>
    <!-- Admin Partial Pages -->
+   <definition name="Admin/_AppUsers" template="/WEB-INF/Views/Admin/_AppUsers.jsp" />
    <definition name="Admin/_EditUser" template="/WEB-INF/Views/Admin/_EditUser.jsp" />
    
    <!-- Bank/Index page -->

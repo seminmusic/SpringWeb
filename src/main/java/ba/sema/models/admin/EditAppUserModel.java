@@ -1,11 +1,22 @@
 package ba.sema.models.admin;
 
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotBlank;
+
 public class EditAppUserModel
 {
 	private Integer korisnikId;
+	@NotBlank(message = "Obavezan unos imena")
+	@Size(max = 20, message = "Ime može imati najviše {max} karaktera")
     private String ime;
+	@NotBlank(message = "Obavezan unos prezimena")
+	@Size(max = 20, message = "Prezime može imati najviše {max} karaktera")
     private String prezime;
+	@Size(max = 30, message = "E-mail može imati najviše {max} karaktera")
 	private String email;
+	@NotBlank(message = "Obavezan unos korisničkog imena")
+	@Size(max = 30, message = "Korisničko ime može imati najviše {max} karaktera")
 	private String username;
 	
 	

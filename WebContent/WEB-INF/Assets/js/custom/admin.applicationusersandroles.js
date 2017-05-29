@@ -1,4 +1,9 @@
 $(function () {
+	BindEventsForTabUsers();
+});
+
+
+function BindEventsForTabUsers() {
 	$("#tab-users tr").hover(
 		function () {
 			$(this).find(".edit-user").show();
@@ -20,19 +25,30 @@ $(function () {
 	        },
 	        success: function (partial, textStatus, jqXHR) {
 	        	$tr.replaceWith(partial);
+	        	$("#tab-users tr.tr-edit[data-user-id='" + userId + "']")
+	        		.find("form")
+	        		.bootstrapValidator()
+	        		.on("success.form.bv", function (event) {
+	        			// Prevent form submission:
+	        			event.preventDefault();
+	        			// Get the form instance:
+	        			var $forma = $(event.target);
+	        			//
+	        			UpdateAppUser($forma);
+	        		});
 	        },
 	        error: function (jqXHR, textStatus, errorThrown) {
 	            alert(errorThrown);
 	        },
 	        complete: function (jqXHR, textStatus) {
-
+	        	
 	        }
 	    });
 	});
-});
+}
 
-function UpdateAppUser(button) {
-	var $forma = $(button).closest("form");
+function UpdateAppUser($forma) {
+	// $forma.bootstrapValidator("validate");  // Validate the form manually
 	$.ajax({
         type: "POST",
         url: "/app/admin/app-users-roles/ajax/update-user",
@@ -42,8 +58,10 @@ function UpdateAppUser(button) {
         beforeSend: function () {
 
         },
-        success: function (response, textStatus, jqXHR) {
-        	var a = 0;
+        success: function (partial, textStatus, jqXHR) {
+        	$("#tab-users").empty();
+        	$("#tab-users").html(partial);
+        	BindEventsForTabUsers();
         },
         error: function (jqXHR, textStatus, errorThrown) {
             alert(errorThrown);
@@ -55,5 +73,23 @@ function UpdateAppUser(button) {
 }
 
 function CancelUpdateAppUser(button) {
-	alert("Cancel");
+	$.ajax({
+        type: "GET",
+        url: "/app/admin/app-users-roles/ajax/cancel-update-user",
+        cache: false,
+        beforeSend: function () {
+        	
+        },
+        success: function (partial, textStatus, jqXHR) {
+        	$("#tab-users").empty();
+        	$("#tab-users").html(partial);
+        	BindEventsForTabUsers();
+        },
+        error: function (jqXHR, textStatus, errorThrown) {
+            alert(errorThrown);
+        },
+        complete: function (jqXHR, textStatus) {
+        	
+        }
+    });
 }

@@ -3,7 +3,7 @@
 
 <table class="table table-hover" style="table-layout:fixed">
 	<tbody>
-		<c:forEach var="user" items="${model.users}">
+		<c:forEach var="user" items="${model.users != null ? model.users : users}">
 			<tr>
 				<td>
 					${user.ime} ${user.prezime}

@@ -1,5 +1,7 @@
 package ba.sema.controllers;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import ba.sema.helpers.HibernateExporter;
+import ba.sema.models.admin.AppUsersModel;
 import ba.sema.models.admin.AppUsersRolesModel;
 import ba.sema.models.admin.EditAppUserModel;
 import ba.sema.services.AppUsersRolesService;
@@ -58,14 +61,29 @@ public class AdminController
 	
 	@RequestMapping(value = "/app-users-roles/ajax/update-user", method = RequestMethod.POST)
 	@ResponseBody
-	public String updateUser(@Valid @ModelAttribute("user") EditAppUserModel user, BindingResult bindingResult)
+	public ModelAndView updateUser(@Valid @ModelAttribute("user") EditAppUserModel user, BindingResult bindingResult)
 	{
 		if (bindingResult.hasErrors())
 		{
 			
 		}
+		
 		appUsersRolesService.updateUser(user);
-		return "Sve OK";
+		
+		ModelAndView model = new ModelAndView("Admin/_AppUsers");
+		model.addObject("users", appUsersRolesService.getUsers());
+		
+		return model;
+	}
+	
+	@RequestMapping(value = "/app-users-roles/ajax/cancel-update-user", method = RequestMethod.GET)
+	@ResponseBody
+	public ModelAndView cancelUpdateUser()
+	{
+		ModelAndView model = new ModelAndView("Admin/_AppUsers");
+		model.addObject("users", appUsersRolesService.getUsers());
+		
+		return model;
 	}
 	
 	@RequestMapping(value = "/generate-ddl", method = RequestMethod.GET)
