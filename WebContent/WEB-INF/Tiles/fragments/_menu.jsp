@@ -47,7 +47,7 @@
                     </li>
                 </c:if>
            	</ul>
-           	<sec:authorize access="hasAuthority('ADMIN')">
+<%--            	<sec:authorize access="hasAuthority('ADMIN')"> --%>
 	            <ul class="nav navbar-nav navbar-right">
             		<li class="dropdown ${fn:startsWith(putanja, '/admin') ? 'active' : ''}">
           				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Admin <span class="caret"></span></a>
@@ -60,7 +60,7 @@
           				</ul>
         			</li>
 	            </ul>
-            </sec:authorize>
+<%--             </sec:authorize> --%>
         </div>
     </div>
 </div>

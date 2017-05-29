@@ -21,7 +21,7 @@ import ba.sema.services.AppUsersRolesService;
 
 @Controller
 @RequestMapping(value = "/admin")
-@PreAuthorize("hasAuthority('ADMIN')")
+// @PreAuthorize("hasAuthority('ADMIN')")
 public class AdminController
 {
 	@Autowired
