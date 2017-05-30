@@ -38,7 +38,7 @@ function BindEventsForTabUsers() {
 	        		});
 	        },
 	        error: function (jqXHR, textStatus, errorThrown) {
-	            alert(errorThrown);
+	            alert(jqXHR.responseText);
 	        },
 	        complete: function (jqXHR, textStatus) {
 	        	
@@ -64,7 +64,7 @@ function UpdateAppUser($forma) {
         	BindEventsForTabUsers();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
+            alert(jqXHR.responseText);
         },
         complete: function (jqXHR, textStatus) {
 
@@ -86,7 +86,7 @@ function CancelUpdateAppUser(button) {
         	BindEventsForTabUsers();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(errorThrown);
+            alert(jqXHR.responseText);
         },
         complete: function (jqXHR, textStatus) {
         	

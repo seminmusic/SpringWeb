@@ -5,6 +5,9 @@ import java.util.List;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -49,14 +52,33 @@ public class AdminController
 	}
 	
 	@RequestMapping(value = "/app-users-roles/ajax/edit-user", method = RequestMethod.GET)
-	public ModelAndView editUser(@RequestParam("userId") int id)
+	public Object editUser(@RequestParam("userId") int id)
 	{
-		EditAppUserModel user = appUsersRolesService.loadUserForEdit(id);
+		boolean imaGreska = false;
 		
-		ModelAndView model = new ModelAndView("Admin/_EditUser");
-		model.addObject("user", user);
-		
-		return model;
+		if (imaGreska)
+		{
+			// return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Greška na serveru.");  // Ne postavlja UTF-8
+			
+			HttpHeaders responseHeaders = new HttpHeaders();
+			
+			// HTML format responsa:
+			// responseHeaders.add("Content-Type", "text/html; charset=utf-8");
+			// return new ResponseEntity<String>("<div style='color:red'>Desila se greška.</div>", responseHeaders, HttpStatus.BAD_REQUEST);
+			
+			// Text format responsa:
+			responseHeaders.add("Content-Type", "text/plain; charset=utf-8");
+			return new ResponseEntity<String>("Desila se greška.", responseHeaders, HttpStatus.BAD_REQUEST);
+		}
+		else
+		{
+			EditAppUserModel user = appUsersRolesService.loadUserForEdit(id);
+			
+			ModelAndView model = new ModelAndView("Admin/_EditUser");
+			model.addObject("user", user);
+			
+			return model;
+		}
 	}
 	
 	@RequestMapping(value = "/app-users-roles/ajax/update-user", method = RequestMethod.POST)

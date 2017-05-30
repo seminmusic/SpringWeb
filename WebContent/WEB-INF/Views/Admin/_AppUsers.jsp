@@ -5,7 +5,7 @@
 	<tbody>
 		<c:forEach var="user" items="${model.users != null ? model.users : users}">
 			<tr>
-				<td>
+				<td style="width:22%">
 					${user.ime} ${user.prezime}
 					<span class="edit-user" 
 						  data-user-id="${user.korisnikId}" 
@@ -14,10 +14,10 @@
 						<i class="fa fa-pencil" style="color:green"></i>
 					</span>
 				</td>
-				<td>${not empty user.email ? "(".concat(user.email).concat(")") : ""}</td>
-				<td><i>Username:</i> ${user.username}</td>
-				<td style="font-weight:bold; ${user.status == 'Aktivan' ? 'color:green' : 'color:red'}">${user.status}</td>
-				<td>
+				<td style="width:20%">${not empty user.email ? "(".concat(user.email).concat(")") : ""}</td>
+				<td style="width:18%"><i>Username:</i> ${user.username}</td>
+				<td style="width:15%; font-weight:bold; ${user.status == 'Aktivan' ? 'color:green' : 'color:red'}">${user.status}</td>
+				<td style="width:25%; text-align:right">
 					<c:forEach var="rola" items="${user.roleKorisnika}">
 						<span class="label label-primary">${rola}</span>
 					</c:forEach>

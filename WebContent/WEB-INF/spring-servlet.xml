@@ -34,7 +34,9 @@
     -->
     
     <!-- Tiles View Resolver -->
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver" />
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.tiles3.TilesViewResolver">
+		<property name="contentType" value="text/html; charset=UTF-8" />
+	</bean>
     
     <!-- Tiles Configurer -->
     <bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">

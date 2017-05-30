@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ba.sema.dao._LoginKorisnikDAO;
+import ba.sema.dao._LoginRolaDAO;
 import ba.sema.entities._LoginKorisnik;
 import ba.sema.entities._LoginRola;
 import ba.sema.models.admin.AppRolesModel;
@@ -20,6 +21,8 @@ public class AppUsersRolesServiceImpl implements AppUsersRolesService
 {
 	@Autowired
 	private _LoginKorisnikDAO loginKorisnikDAO;
+	@Autowired
+	private _LoginRolaDAO loginRolaDAO;
 	
 	@Override
 	@Transactional
@@ -50,12 +53,24 @@ public class AppUsersRolesServiceImpl implements AppUsersRolesService
 	public EditAppUserModel loadUserForEdit(int id)
 	{
 		_LoginKorisnik korisnik = loginKorisnikDAO.findById(id);
+		
 		EditAppUserModel model = new EditAppUserModel();
 		model.setKorisnikId(id);
 		model.setIme(korisnik.getIme());
 		model.setPrezime(korisnik.getPrezime());
 		model.setEmail(korisnik.getEmail());
 		model.setUsername(korisnik.getUsername());
+		model.setStatus(korisnik.getStatus());
+		
+		korisnik.getRoleKorisnika().forEach((_LoginRola rola) -> {
+			model.getRole().add(rola.getRolaId());
+		});
+		
+		List<_LoginRola> sveRole = loginRolaDAO.sveRole();
+		sveRole.forEach((_LoginRola rola) -> {
+			model.getRoleLista().put(rola.getRolaId(), rola.getNazivRole());
+		});
+		
 		return model;
 	}
 	
@@ -68,6 +83,14 @@ public class AppUsersRolesServiceImpl implements AppUsersRolesService
 		korisnik.setPrezime(model.getPrezime());
 		korisnik.setEmail(model.getEmail());
 		korisnik.setUsername(model.getUsername());
+		korisnik.setStatus(model.getStatus());
+		
+		korisnik.getRoleKorisnika().clear();
+		model.getRole().forEach((Integer idRole) -> {
+			_LoginRola rola = loginRolaDAO.findById(idRole);
+			korisnik.getRoleKorisnika().add(rola);
+		});
+		
 		loginKorisnikDAO.updateUser(korisnik);
 	}
 
