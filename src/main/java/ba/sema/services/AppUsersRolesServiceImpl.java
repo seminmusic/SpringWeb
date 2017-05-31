@@ -2,6 +2,7 @@ package ba.sema.services;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -66,7 +67,7 @@ public class AppUsersRolesServiceImpl implements AppUsersRolesService
 			model.getRole().add(rola.getRolaId());
 		});
 		
-		List<_LoginRola> sveRole = loginRolaDAO.sveRole();
+		List<_LoginRola> sveRole = loginRolaDAO.sveRole(false);
 		sveRole.forEach((_LoginRola rola) -> {
 			model.getRoleLista().put(rola.getRolaId(), rola.getNazivRole());
 		});
@@ -96,8 +97,20 @@ public class AppUsersRolesServiceImpl implements AppUsersRolesService
 
 	@Override
 	@Transactional
-	public List<AppRolesModel> getRoles()
+	public List<AppRolesModel> getRoles(boolean initializeLazyObjects)
 	{
-		return null;
+		List<_LoginRola> role = loginRolaDAO.sveRole(initializeLazyObjects);
+		List<AppRolesModel> modeli = new ArrayList<AppRolesModel>();
+		role.forEach((_LoginRola r) -> {
+			AppRolesModel m = new AppRolesModel();
+			m.setRolaId(r.getRolaId());
+			m.setNazivRole(r.getNazivRole());
+			m.setKorisniciRole(r.getKorisniciRole()
+								.stream()
+								.map(korisnik -> korisnik.getUsername())
+								.collect(Collectors.toList()));
+			modeli.add(m);
+		});
+		return modeli;
 	}
 }

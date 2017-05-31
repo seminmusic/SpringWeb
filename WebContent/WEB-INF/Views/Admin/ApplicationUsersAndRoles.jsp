@@ -20,7 +20,7 @@
         			<tiles:insertAttribute name="_AppUsers" />
     			</div>
     			<div role="tabpanel" class="tab-pane" id="tab-roles">
-    			
+    				<tiles:insertAttribute name="_AppRoles" />
     			</div>
   			</div>
 		</div>

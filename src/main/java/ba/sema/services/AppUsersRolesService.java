@@ -11,5 +11,5 @@ public interface AppUsersRolesService
 	public List<AppUsersModel> getUsers();
 	public EditAppUserModel loadUserForEdit(int id);
 	public void updateUser(EditAppUserModel model);
-	public List<AppRolesModel> getRoles();
+	public List<AppRolesModel> getRoles(boolean initializeLazyObjects);
 }
