@@ -4,17 +4,19 @@ $(function () {
 
 
 function BindEventsForTabUsers() {
-	$("#tab-users tr").hover(
-		function () {
-			$(this).find(".edit-user").show();
-		},
-		function () {
-			$(this).find(".edit-user").hide();
-		}
-	);
+	$("#tab-users").on({
+	    mouseenter: function () {
+	    	$(this).find(".edit-user").show();
+	    },
+	    mouseleave: function () {
+	    	$(this).find(".edit-user").hide();
+	    }
+	}, "tr:not(.block-edit)");
+	
 	$("#tab-users .edit-user").click(function () {
 		var userId = $(this).data("userId");
 		var $tr = $(this).closest("tr");
+		$tr.siblings().addClass("block-edit");
 		$.ajax({
 	        type: "GET",
 	        url: "/app/admin/app-users-roles/ajax/edit-user",

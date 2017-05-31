@@ -75,3 +75,6 @@ hr {
 .table > tbody > tr.tr-edit {
     background-color: #f5f5f5;
 }
+.table-hover > tbody > tr.block-edit:hover {
+    background-color: inherit;
+}
