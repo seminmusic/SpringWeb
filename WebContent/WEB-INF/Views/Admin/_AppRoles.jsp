@@ -5,7 +5,14 @@
 	<tbody>
 		<c:forEach var="rola" items="${model.roles}">
 			<tr>
-				<td>${rola.nazivRole}</td>
+				<td style="width:15%">${rola.nazivRole}</td>
+				<td>
+					<c:forEach var="korisnik" items="${rola.korisniciRole}">
+						<span class="label label-default" style="margin-right:8px">
+							<i class="fa fa-user"></i>&nbsp; ${korisnik}
+						</span>
+					</c:forEach>
+				</td>
 			</tr>
 		</c:forEach>
 	</tbody>

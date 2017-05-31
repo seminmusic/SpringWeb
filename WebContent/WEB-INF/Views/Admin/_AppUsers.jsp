@@ -16,10 +16,12 @@
 				</td>
 				<td style="width:20%">${not empty user.email ? "(".concat(user.email).concat(")") : ""}</td>
 				<td style="width:18%"><i>Username:</i> ${user.username}</td>
-				<td style="width:15%; font-weight:bold; ${user.status == 'Aktivan' ? 'color:green' : 'color:red'}">${user.status}</td>
-				<td style="width:25%; text-align:right">
+				<td style="width:10%; font-weight:bold; ${user.status == 'Aktivan' ? 'color:green' : 'color:red'}">${user.status}</td>
+				<td style="width:30%; text-align:right">
 					<c:forEach var="rola" items="${user.roleKorisnika}">
-						<span class="label label-primary">${rola}</span>
+						<span class="label label-primary" style="margin-left:8px">
+							<i class="fa fa-key"></i>&nbsp; ${rola}
+						</span>
 					</c:forEach>
 				</td>
 			</tr>
