@@ -2,7 +2,6 @@ package ba.sema.dao;
 
 import java.util.List;
 
-import org.hibernate.Hibernate;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,15 +22,9 @@ public class _LoginRolaDAOImpl implements _LoginRolaDAO
 	
 	@Override
 	@SuppressWarnings("unchecked")
-	public List<_LoginRola> sveRole(boolean initializeLazyObjects)
+	public List<_LoginRola> sveRole()
 	{
 		List<_LoginRola> role = (List<_LoginRola>)sessionFactory.getCurrentSession().createQuery("FROM _LoginRola ORDER BY rolaId").list();
-		if (initializeLazyObjects)
-		{
-			role.forEach((_LoginRola r) -> {
-				Hibernate.initialize(r.getKorisniciRole());
-			});
-		}
 		return role;
 	}
 }

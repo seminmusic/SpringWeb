@@ -27,9 +27,6 @@ public class _LoginKorisnikDAOImpl implements _LoginKorisnikDAO
 											 .createQuery("FROM _LoginKorisnik WHERE username = ?")
 											 .setString(0, username)
 											 .uniqueResult();
-		// Initialize LAZY object:
-		// Hibernate.initialize(korisnik.getRoleKorisnika());
-		// return korisnik;
 	}
 	
 	@Override

@@ -67,7 +67,7 @@ public class AppUsersRolesServiceImpl implements AppUsersRolesService
 			model.getRole().add(rola.getRolaId());
 		});
 		
-		List<_LoginRola> sveRole = loginRolaDAO.sveRole(false);
+		List<_LoginRola> sveRole = loginRolaDAO.sveRole();
 		sveRole.forEach((_LoginRola rola) -> {
 			model.getRoleLista().put(rola.getRolaId(), rola.getNazivRole());
 		});
@@ -97,14 +97,21 @@ public class AppUsersRolesServiceImpl implements AppUsersRolesService
 
 	@Override
 	@Transactional
-	public List<AppRolesModel> getRoles(boolean initializeLazyObjects)
+	public List<AppRolesModel> getRoles()
 	{
-		List<_LoginRola> role = loginRolaDAO.sveRole(initializeLazyObjects);
+		List<_LoginRola> role = loginRolaDAO.sveRole();
+		
 		List<AppRolesModel> modeli = new ArrayList<AppRolesModel>();
 		role.forEach((_LoginRola r) -> {
 			AppRolesModel m = new AppRolesModel();
 			m.setRolaId(r.getRolaId());
 			m.setNazivRole(r.getNazivRole());
+			// U rolama su korisnici role LAZY i nisu dostupni dok se ne inicijalizuju.
+			// Da bi se inicijalizovali LAZY treba im pristupiti ili pozvati Hibernate.initialize(...) a to se može uraditi
+			// samo ako je hibernate sesija još aktivna. Sa @Transactional se označava metod koji će držati sesiju aktivnom
+			// dok se metod ne završi pa je najbolje @Transactional postaviti u @Service layer a ne u @Repository layer.
+			// Znači, ne moramo u @Repository layeru inicijalizovati LAZY nego može ovdje jer je metod @Transactional i sesija
+			// je aktivna, tako da će sa getKorisniciRole() set LAZY korisnika biti popunjen iz baze:
 			m.setKorisniciRole(r.getKorisniciRole()
 								.stream()
 								.map(korisnik -> korisnik.getUsername())
