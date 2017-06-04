@@ -2,6 +2,7 @@ package ba.sema.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -23,10 +24,19 @@ public class _LoginKorisnikDAOImpl implements _LoginKorisnikDAO
 	@Override
 	public _LoginKorisnik findByUsername(String username)
 	{
-		return (_LoginKorisnik)sessionFactory.getCurrentSession()
-											 .createQuery("FROM _LoginKorisnik WHERE username = ?")
-											 .setString(0, username)
-											 .uniqueResult();
+		// Generiše 2 query za korisnika i njegove role:
+		//return (_LoginKorisnik)sessionFactory.getCurrentSession()
+		//									 .createQuery("FROM _LoginKorisnik WHERE username = ?")
+		//									 .setString(0, username)
+		//									 .uniqueResult();
+		
+		// Generiše 1 query ukupno:
+		Query query = sessionFactory.getCurrentSession()
+									.createQuery("SELECT K FROM _LoginKorisnik K " + 
+												 "FULL JOIN FETCH K.roleKorisnika RK " + 
+												 "WHERE K.username = ?");
+		
+		return (_LoginKorisnik)query.setString(0, username).uniqueResult();
 	}
 	
 	@Override
