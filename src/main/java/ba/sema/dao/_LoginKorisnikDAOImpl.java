@@ -46,6 +46,7 @@ public class _LoginKorisnikDAOImpl implements _LoginKorisnikDAO
 		//List<_LoginKorisnik> lista = (List<_LoginKorisnik>)sessionFactory.getCurrentSession().createQuery("FROM _LoginKorisnik ORDER BY korisnikId").list();
 		//return lista;
 		
+		System.out.println("================== KORISNICI sa Rolama: ==================");
 		Query query = sessionFactory.getCurrentSession()
 									.createQuery("SELECT DISTINCT K FROM _LoginKorisnik K " + 
 												 "LEFT JOIN FETCH K.roleKorisnika RK " + 

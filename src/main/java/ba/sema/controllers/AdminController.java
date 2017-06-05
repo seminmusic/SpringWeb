@@ -43,7 +43,7 @@ public class AdminController
 	public ModelAndView applicationUsersAndRoles()
 	{
 		AppUsersRolesModel data = new AppUsersRolesModel();
-		// data.setUsers(appUsersRolesService.getUsers());
+		data.setUsers(appUsersRolesService.getUsers());
 		data.setRoles(appUsersRolesService.getRoles());
 		
 		ModelAndView model = new ModelAndView("Admin/ApplicationUsersAndRoles");

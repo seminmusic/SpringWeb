@@ -28,6 +28,7 @@ public class _LoginRolaDAOImpl implements _LoginRolaDAO
 		//List<_LoginRola> role = (List<_LoginRola>)sessionFactory.getCurrentSession().createQuery("FROM _LoginRola ORDER BY rolaId").list();
 		//return role;
 		
+		System.out.println("================== ROLE sa Korisnicima: ==================");
 		Query query = sessionFactory.getCurrentSession()
 				.createQuery("SELECT DISTINCT R FROM _LoginRola R " + 
 							 "LEFT JOIN FETCH R.korisniciRole KR " +
