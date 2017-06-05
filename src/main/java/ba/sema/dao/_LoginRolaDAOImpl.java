@@ -2,6 +2,7 @@ package ba.sema.dao;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -24,7 +25,15 @@ public class _LoginRolaDAOImpl implements _LoginRolaDAO
 	@SuppressWarnings("unchecked")
 	public List<_LoginRola> sveRole()
 	{
-		List<_LoginRola> role = (List<_LoginRola>)sessionFactory.getCurrentSession().createQuery("FROM _LoginRola ORDER BY rolaId").list();
-		return role;
+		//List<_LoginRola> role = (List<_LoginRola>)sessionFactory.getCurrentSession().createQuery("FROM _LoginRola ORDER BY rolaId").list();
+		//return role;
+		
+		Query query = sessionFactory.getCurrentSession()
+				.createQuery("SELECT DISTINCT R FROM _LoginRola R " + 
+							 "LEFT JOIN FETCH R.korisniciRole KR " +
+							 "LEFT JOIN FETCH KR.roleKorisnika RK " +
+							 "ORDER BY R.rolaId");
+		
+		return (List<_LoginRola>)query.list();
 	}
 }
