@@ -43,8 +43,15 @@ public class _LoginKorisnikDAOImpl implements _LoginKorisnikDAO
 	@SuppressWarnings("unchecked")
 	public List<_LoginKorisnik> sviLoginKorisnici()
 	{
-		List<_LoginKorisnik> lista = (List<_LoginKorisnik>)sessionFactory.getCurrentSession().createQuery("FROM _LoginKorisnik ORDER BY korisnikId").list();
-		return lista;
+		//List<_LoginKorisnik> lista = (List<_LoginKorisnik>)sessionFactory.getCurrentSession().createQuery("FROM _LoginKorisnik ORDER BY korisnikId").list();
+		//return lista;
+		
+		Query query = sessionFactory.getCurrentSession()
+									.createQuery("SELECT DISTINCT K FROM _LoginKorisnik K " + 
+												 "LEFT JOIN FETCH K.roleKorisnika RK " + 
+												 "ORDER BY K.korisnikId");
+		
+		return (List<_LoginKorisnik>)query.list();
 	}
 	
 	@Override
