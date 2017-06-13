@@ -60,9 +60,12 @@ function UpdateAppUser($forma) {
         beforeSend: function () {
 
         },
-        success: function (partial, textStatus, jqXHR) {
+        success: function (response, textStatus, jqXHR) {
+        	var jsonResponse = JSON.parse(response);
         	$("#tab-users").empty();
-        	$("#tab-users").html(partial);
+        	$("#tab-users").html(jsonResponse.data.usersHtml);
+        	$("#tab-roles").empty();
+        	$("#tab-roles").html(jsonResponse.data.rolesHtml);
         	BindEventsForTabUsers();
         },
         error: function (jqXHR, textStatus, errorThrown) {

@@ -3,7 +3,7 @@
 
 <table class="table table-hover" style="table-layout:fixed">
 	<tbody>
-		<c:forEach var="rola" items="${model.roles}">
+		<c:forEach var="rola" items="${model.roles != null ? model.roles : roles}">
 			<tr>
 				<td style="width:15%">${rola.nazivRole}</td>
 				<td>
