@@ -56,20 +56,20 @@ function UpdateAppUser($forma) {
         url: "/app/admin/app-users-roles/ajax/update-user",
         data: $forma.serialize(),
         cache: false,
+        dataType: "json",  // The type of data that you're expecting back from the server. If none is specified, jQuery will try to infer it based on the MIME type of the response.
         //
         beforeSend: function () {
 
         },
         success: function (response, textStatus, jqXHR) {
-        	var jsonResponse = JSON.parse(response);
         	$("#tab-users").empty();
-        	$("#tab-users").html(jsonResponse.data.usersHtml);
+        	$("#tab-users").html(response.data.usersHtml);
         	$("#tab-roles").empty();
-        	$("#tab-roles").html(jsonResponse.data.rolesHtml);
+        	$("#tab-roles").html(response.data.rolesHtml);
         	BindEventsForTabUsers();
         },
         error: function (jqXHR, textStatus, errorThrown) {
-            alert(jqXHR.responseText);
+            alert(jqXHR.responseJSON.status);
         },
         complete: function (jqXHR, textStatus) {
 
