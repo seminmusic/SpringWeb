@@ -34,7 +34,7 @@
 					<td>${bankModel.bamcardId}</td>
 					<sec:authorize access="hasAnyAuthority('ADMIN', 'UNOS')">
 						<td>
-							<a href="${pageContext.request.contextPath}/banks/edit-bank?bankId=${bankModel.bankId}" style="float:left">
+							<a href="${pageContext.request.contextPath}/banks/edit-bank/${bankModel.bankId}" style="float:left">
 								<i class="fa fa-pencil" style="color: blue"></i> Edit Bank
 							</a>
 							<a href="${pageContext.request.contextPath}/banks/delete-bank?bankId=${bankModel.bankId}" style="float:right">

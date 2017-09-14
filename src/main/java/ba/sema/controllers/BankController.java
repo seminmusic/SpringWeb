@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,11 +52,11 @@ public class BankController
 	}
 	
 	// GET - Izmjena banke:
-	@RequestMapping(value = "/edit-bank", method = RequestMethod.GET)
+	@RequestMapping(value = "/edit-bank/{id}", method = RequestMethod.GET)
 	@PreAuthorize("hasAnyAuthority('ADMIN', 'UNOS')")
-	public ModelAndView editBank(@RequestParam Map<String, String> sviParametri)
+	public ModelAndView editBank(@PathVariable("id") int bankId)
 	{
-		NewBankModel bank = bankService.getBank(Integer.parseInt(sviParametri.get("bankId")));
+		NewBankModel bank = bankService.getBank(bankId);
 		ModelAndView model = new ModelAndView("Bank/Edit");
 		model.addObject("newBankModel", bank);
 		return model;
