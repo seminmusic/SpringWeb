@@ -1,8 +1,6 @@
 package ba.sema.controllers;
 
 import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
@@ -15,8 +13,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import ba.sema.models.bank.BankModel;
 import ba.sema.models.bank.NewBankModel;
@@ -33,10 +31,11 @@ public class BankController
 	
 	// GET - Sve banke:
 	@RequestMapping(value = {"", "/", "/list"}, method = RequestMethod.GET)
-	public String listAllBanks(Model model)
+	public String listAllBanks(Model model, @ModelAttribute("delete-error") String deleteErrorMessage)
 	{
 		List<BankModel> allBanks = bankService.getAllBanks();
 		model.addAttribute("bankModels", allBanks);
+		model.addAttribute("deleteErrorMessage", deleteErrorMessage);
 		return "Bank/Index";
 	}
 	
@@ -88,10 +87,17 @@ public class BankController
 	// GET - Brisanje banke:
 	@RequestMapping(value = "/delete-bank", method = RequestMethod.GET)
 	@PreAuthorize("hasAuthority('ADMIN')")
-	public ModelAndView deleteBank(HttpServletRequest request)
+	public ModelAndView deleteBank(HttpServletRequest request, RedirectAttributes redirectAttributes)
 	{
 		int bankId = Integer.parseInt(request.getParameter("bankId"));
-		bankService.deleteBank(bankId);
+		try
+		{
+			bankService.deleteBank(bankId);
+		}
+		catch (Exception e)
+		{
+			redirectAttributes.addFlashAttribute("delete-error", "Error while trying delete bank from database!");
+		}
 		return new ModelAndView("redirect:/banks/list");
 	}
 }

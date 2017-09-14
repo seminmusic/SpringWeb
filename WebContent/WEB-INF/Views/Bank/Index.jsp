@@ -47,3 +47,9 @@
 		</tbody>
 	</table>
 </div>
+<c:if test="${deleteErrorMessage != ''}">
+	<div class="alert alert-danger alert-dismissible" style="margin-top:20px; margin-bottom:0">
+		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		<strong>${deleteErrorMessage}</strong>
+	</div>
+</c:if>
