@@ -99,4 +99,10 @@
        </put-list-attribute>
    </definition>
    
+   <!-- User/Index page -->
+   <definition name="User/Index" extends="Layout.Default">
+       <put-attribute name="title" value="BamPay Administration | Users" />
+       <put-attribute name="body"  value="/WEB-INF/Views/User/Index.jsp" />
+   </definition>
+   
 </tiles-definitions>

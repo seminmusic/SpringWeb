@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <div>
-	<h1>DDL</h1>
+	<h3 class="naslov-stranice">DDL</h3>
 	<div>
 		<c:forEach var="query" items="${createQueries}">
 			<div>

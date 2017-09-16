@@ -3,7 +3,7 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
-<h1>New / Edit Bank</h1>
+<h3 class="naslov-stranice">New / Edit Bank</h3>
 <div>
 	<form:form action="${pageContext.request.contextPath}/banks/save-bank" method="post" modelAttribute="newBankModel"
 			   data-bv-message="Vrijednost nije validna"

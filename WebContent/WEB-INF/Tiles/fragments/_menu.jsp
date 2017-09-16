@@ -18,7 +18,14 @@
         	<c:set var="putanja" value="${fn:substring(requestURI, fn:length(pageContext.request.contextPath), fn:length(requestURI))}" />
             <ul class="nav navbar-nav">
                 <li class="${fn:startsWith(putanja, '/banks') ? 'active' : ''}">
-                	<a href="${pageContext.request.contextPath}/banks/list">Banks</a>
+                	<a href="${pageContext.request.contextPath}/banks/list">
+                		<i class="fa fa-university fa-fw"></i>&nbsp; Banks
+                	</a>
+                </li>
+                <li class="${fn:startsWith(putanja, '/users') ? 'active' : ''}">
+                	<a href="${pageContext.request.contextPath}/users/list">
+                		<i class="fa fa-user-circle fa-fw"></i>&nbsp; Users
+                	</a>
                 </li>
             </ul>
            	<ul class="nav navbar-nav navbar-right navbar-user">

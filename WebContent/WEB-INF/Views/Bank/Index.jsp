@@ -2,7 +2,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
-<h1>Bank List</h1>
+<h3 class="naslov-stranice">Bank List</h3>
 <div style="margin:20px 0">
 	<a href="${pageContext.request.contextPath}/banks/new-bank" class="btn btn-success">
 		<i class="fa fa-plus"></i>&nbsp; New Bank
@@ -50,6 +50,6 @@
 <c:if test="${deleteErrorMessage != ''}">
 	<div class="alert alert-danger alert-dismissible" style="margin-top:20px; margin-bottom:0">
 		<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-		<strong>${deleteErrorMessage}</strong>
+		${deleteErrorMessage}
 	</div>
 </c:if>
