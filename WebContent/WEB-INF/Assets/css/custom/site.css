@@ -78,3 +78,9 @@ hr {
 .table-hover > tbody > tr.block-edit:hover {
     background-color: inherit;
 }
+
+
+#atm-map {
+	height: 600px;
+	width: 100%;
+}

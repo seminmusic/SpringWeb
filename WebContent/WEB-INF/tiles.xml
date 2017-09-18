@@ -105,4 +105,14 @@
        <put-attribute name="body"  value="/WEB-INF/Views/User/Index.jsp" />
    </definition>
    
+   <!-- Atm/Index page -->
+   <definition name="Atm/Index" extends="Layout.Default">
+       <put-attribute name="title" value="BamPay Administration | ATM" />
+       <put-attribute name="body"  value="/WEB-INF/Views/Atm/Index.jsp" />
+       <put-list-attribute name="js" inherit="true">
+       	   <add-attribute value="https://maps.googleapis.com/maps/api/js?key=AIzaSyD11vAyQe2x2jcW6q_k9QtI-cFSi4Wvwzw" />
+           <add-attribute value="/js/custom/atm.index.js" />
+       </put-list-attribute>
+   </definition>
+   
 </tiles-definitions>

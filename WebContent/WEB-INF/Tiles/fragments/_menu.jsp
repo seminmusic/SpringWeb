@@ -27,6 +27,11 @@
                 		<i class="fa fa-user-circle fa-fw"></i>&nbsp; Users
                 	</a>
                 </li>
+                <li class="${fn:startsWith(putanja, '/atms') ? 'active' : ''}">
+                	<a href="${pageContext.request.contextPath}/atms/list">
+                		<i class="fa fa-map-marker fa-fw"></i>&nbsp; ATM
+                	</a>
+                </li>
             </ul>
            	<ul class="nav navbar-nav navbar-right navbar-user">
            		<c:url var="loginUrl" value="/login" />
