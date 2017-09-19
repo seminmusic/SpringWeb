@@ -84,3 +84,48 @@ hr {
 	height: 600px;
 	width: 100%;
 }
+
+.navbar-kviko {
+	background-color: #9134C1;
+	border-color: #6a01a0;
+}
+.navbar-kviko .navbar-brand {
+    color: white;
+}
+.navbar-kviko .navbar-brand:focus, 
+.navbar-kviko .navbar-brand:hover {
+    color: aqua;
+    background-color: transparent;
+}
+.navbar-kviko .navbar-nav > li > a {
+    color: white;
+}
+.navbar-kviko .navbar-nav > li > a:focus, 
+.navbar-kviko .navbar-nav > li > a:hover {
+    color: aqua;
+    background-color: transparent;
+}
+.navbar-kviko .navbar-nav > .active > a, 
+.navbar-kviko .navbar-nav > .active > a:focus, 
+.navbar-kviko .navbar-nav > .active > a:hover {
+    color: aqua;
+    background-color: #6a01a0;
+}
+.navbar-kviko .navbar-nav > .open > a, 
+.navbar-kviko .navbar-nav > .open > a:focus, 
+.navbar-kviko .navbar-nav > .open > a:hover {
+    color: aqua;
+    background-color: #6a01a0;
+}
+.dropdown-menu > li > a:focus, 
+.dropdown-menu > li > a:hover {
+    color: aqua;
+    background-color: #9134C1;
+}
+.navbar-kviko .navbar-btn {
+	border-color: #6a01a0;
+}
+.navbar-kviko .navbar-btn:hover {
+    color: #6a01a0;
+    background-color: #fff;
+}

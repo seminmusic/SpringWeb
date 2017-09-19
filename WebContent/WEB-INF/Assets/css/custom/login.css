@@ -23,3 +23,53 @@
 i {
 	color: #337ab7;
 }
+
+
+.panel-kviko {
+	border-color: #6a01a0;
+}
+.panel-kviko .panel-heading {
+	background-color: #9134C1;
+	color: white !important;
+	border-color: #6a01a0;
+}
+.panel-kviko .panel-footer {
+	background-color: #9134C1;
+	color: white;
+	border-top: 1px solid #6a01a0;
+}
+.panel-kviko i {
+	color: #9134C1;
+}
+.panel-kviko .btn {
+	background-color: #9134C1;
+    border-color: #6a01a0;
+}
+
+
+.panel-kviko-2 {
+	border-color: #6a01a0;
+}
+.panel-kviko-2 .panel-heading {
+	font-weight: bold;
+}
+.panel-kviko-2 .panel-heading,
+.panel-kviko-2 .panel-footer,
+.panel-kviko-2 i {
+	color: #6a01a0 !important;
+}
+.panel-kviko-2 .btn {
+	background-color: #9134C1;
+    border-color: #6a01a0;
+}
+.panel-kviko-2 .btn:focus,
+.panel-kviko-2 .btn:hover,
+.panel-kviko-2 .btn:active {
+	color: aqua;
+	background-color: #9134C1;
+    border-color: #6a01a0;
+}
+.panel-kviko-2 input[type="text"],
+.panel-kviko-2 input[type="password"] {
+	color: #6a01a0;
+}

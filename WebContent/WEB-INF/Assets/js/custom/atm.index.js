@@ -18,7 +18,8 @@ $(function () {
 				//icon: {
 				//	url: markerIconUrl,
 				//	scaledSize: new google.maps.Size(20, 20)
-				//}
+				//},
+				icon: "http://maps.google.com/mapfiles/ms/micons/purple-dot.png"  // Icons: https://sites.google.com/site/gmapsdevelopment/
 			});
 			
 			(function(marker, atm) {

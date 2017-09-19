@@ -8,7 +8,7 @@
 <div class="row">
     <div class="col-md-4 col-md-offset-4">
     	
-    	<div class="panel panel-default">
+    	<div class="panel panel-default panel-kviko-2">
     		<div class="panel-heading">BamPay Administration</div>
     		<div class="panel-body">
     			<c:url var="loginUrl" value="/login" />
