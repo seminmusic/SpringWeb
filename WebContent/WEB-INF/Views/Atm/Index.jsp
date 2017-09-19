@@ -5,5 +5,6 @@
 <div id="atm-map"></div>
 
 <script>
-	var a = ${atmLocationsArray};
+	var atmLocations = ${atmLocationsArray};
+	var markerIconUrl = "${pageContext.request.contextPath}/images/kviko-logo.png";
 </script>
