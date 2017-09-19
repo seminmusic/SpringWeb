@@ -129,3 +129,9 @@ hr {
     color: #6a01a0;
     background-color: #fff;
 }
+.navbar-kviko .navbar-user .navbar-text {
+	color: white;
+}
+.navbar-kviko .navbar-user .navbar-text i {
+	color: springgreen;
+}
