@@ -9,6 +9,7 @@ public class BankModel
 	private String bin;
 	private String uppId;
 	private Integer bamcardId;
+	private Boolean smsRegCodeEnabled;
 	
 	
 	public Integer getBankId()
@@ -63,5 +64,14 @@ public class BankModel
 	public void setBamcardId(Integer bamcardId)
 	{
 		this.bamcardId = bamcardId;
+	}
+	
+	public Boolean getSmsRegCodeEnabled()
+	{
+		return smsRegCodeEnabled;
+	}
+	public void setSmsRegCodeEnabled(Boolean smsRegCodeEnabled)
+	{
+		this.smsRegCodeEnabled = smsRegCodeEnabled;
 	}	
 }

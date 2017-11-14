@@ -93,6 +93,21 @@
 					</div>
 				</spring:bind>
 			</div>
+			<div class="col-xs-3">
+				<spring:bind path="smsRegCodeEnabled">
+					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
+						<div class="checkbox" style="margin-top:32px">
+							<label>
+								<form:checkbox path="smsRegCodeEnabled" /> SMS Enabled
+							</label>
+						</div>
+						<c:if test="${status.error}">
+               				<i class="form-control-feedback glyphicon-remove glyphicon server-side-error" style="display:block"></i>
+               				<small class="help-block server-side-error" style="display:block">${status.errorMessage}</small>
+             			</c:if>
+					</div>
+				</spring:bind>
+			</div>
 		</div>
 		<div class="row" style="margin-top:20px">
 			<div class="col-xs-12">

@@ -40,6 +40,9 @@ public class Bank
 	@Column(name = "bamcardid")
 	private Integer bamcardId;
 	
+	@Column(name = "smsregcode", nullable = false)
+	private Boolean smsRegCodeEnabled;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "primaryKey.bank")
 	private Set<BankUser> banksUsers = new HashSet<BankUser>();
 	
@@ -96,6 +99,15 @@ public class Bank
 	public void setBamcardId(Integer bamcardId)
 	{
 		this.bamcardId = bamcardId;
+	}
+	
+	public Boolean getSmsRegCodeEnabled()
+	{
+		return smsRegCodeEnabled;
+	}
+	public void setSmsRegCodeEnabled(Boolean smsRegCodeEnabled)
+	{
+		this.smsRegCodeEnabled = smsRegCodeEnabled;
 	}
 	
 	public Set<BankUser> getBanksUsers()

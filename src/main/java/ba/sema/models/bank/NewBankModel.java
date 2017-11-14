@@ -29,6 +29,8 @@ public class NewBankModel
 	
 	private Integer bamcardId;
 	
+	private Boolean smsRegCodeEnabled;
+	
 	
 	public Integer getBankId()
 	{
@@ -82,5 +84,14 @@ public class NewBankModel
 	public void setBamcardId(Integer bamcardId)
 	{
 		this.bamcardId = bamcardId;
+	}
+	
+	public Boolean getSmsRegCodeEnabled()
+	{
+		return smsRegCodeEnabled;
+	}
+	public void setSmsRegCodeEnabled(Boolean smsRegCodeEnabled)
+	{
+		this.smsRegCodeEnabled = smsRegCodeEnabled;
 	}	
 }

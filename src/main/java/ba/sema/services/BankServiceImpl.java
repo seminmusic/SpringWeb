@@ -30,6 +30,7 @@ public class BankServiceImpl implements BankService
 		bank.setBin(model.getBin());
 		bank.setUppId(model.getUppId());
 		bank.setBamcardId(model.getBamcardId());
+		bank.setSmsRegCodeEnabled(model.getSmsRegCodeEnabled());
 		//
 		bankDAO.addBank(bank);
 	}
@@ -49,6 +50,7 @@ public class BankServiceImpl implements BankService
 			model.setBin(bank.getBin());
 			model.setUppId(bank.getUppId());
 			model.setBamcardId(bank.getBamcardId());
+			model.setSmsRegCodeEnabled(bank.getSmsRegCodeEnabled());
 			//
 			models.add(model);
 		}
@@ -72,6 +74,7 @@ public class BankServiceImpl implements BankService
 		bank.setBin(model.getBin());
 		bank.setUppId(model.getUppId());
 		bank.setBamcardId(model.getBamcardId());
+		bank.setSmsRegCodeEnabled(model.getSmsRegCodeEnabled());
 		//
 		bankDAO.updateBank(bank);
 	}
@@ -87,6 +90,7 @@ public class BankServiceImpl implements BankService
 		model.setBin(bank.getBin());
 		model.setUppId(bank.getUppId());
 		model.setBamcardId(bank.getBamcardId());
+		model.setSmsRegCodeEnabled(bank.getSmsRegCodeEnabled());
 		return model;
 	}
 }

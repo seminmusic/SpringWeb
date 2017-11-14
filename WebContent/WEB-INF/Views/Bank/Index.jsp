@@ -18,6 +18,7 @@
 				<th>BIN</th>
 				<th>UPP ID</th>
 				<th>Bamcard ID</th>
+				<th>SMS Enabled</th>
 				<sec:authorize access="hasAnyAuthority('ADMIN', 'UNOS')">
 					<th>Action</th>
 				</sec:authorize>
@@ -32,6 +33,9 @@
 					<td>${bankModel.bin}</td>
 					<td>${bankModel.uppId}</td>
 					<td>${bankModel.bamcardId}</td>
+					<td>
+						<i class="fa ${bankModel.smsRegCodeEnabled ? 'fa-check' : 'fa-times'}" style="color:${bankModel.smsRegCodeEnabled ? 'limegreen' : 'red'}"></i>
+					</td>
 					<sec:authorize access="hasAnyAuthority('ADMIN', 'UNOS')">
 						<td>
 							<a href="${pageContext.request.contextPath}/banks/edit-bank/${bankModel.bankId}" style="float:left">
