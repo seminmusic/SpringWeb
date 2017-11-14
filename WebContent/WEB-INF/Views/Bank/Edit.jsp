@@ -96,9 +96,11 @@
 			<div class="col-xs-3">
 				<spring:bind path="smsRegCodeEnabled">
 					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
-						<div class="checkbox" style="margin-top:32px">
+						<div class="checkbox" style="margin-top:25px">
 							<label>
-								<form:checkbox path="smsRegCodeEnabled" /> SMS Enabled
+								<form:checkbox path="smsRegCodeEnabled" 
+											   data-toggle="toggle" data-on="<i class='fa fa-check'></i> SMS Enabled" data-off="<i class='fa fa-times'></i> SMS Disabled"
+											   data-onstyle="success" data-offstyle="warning" data-width="150" />
 							</label>
 						</div>
 						<c:if test="${status.error}">
