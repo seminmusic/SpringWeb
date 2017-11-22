@@ -49,7 +49,7 @@
     				</form>
             		<li>
             			<p class="navbar-text">
-                        	<i class="fa fa-user fa-fw"></i>&nbsp; Pozdrav <span style="font-weight:bold; color:springgreen;">${pageContext.request.userPrincipal.name}</span>
+                        	<i class="fa fa-user fa-fw"></i>&nbsp;<span style="font-weight:bold; color:springgreen;">${pageContext.request.userPrincipal.name}</span>
                         </p>
                     </li>
                     <li>

@@ -99,8 +99,8 @@
 						<div class="checkbox" style="margin-top:25px">
 							<label>
 								<form:checkbox path="smsRegCodeEnabled" 
-											   data-toggle="toggle" data-on="<i class='fa fa-check'></i> SMS Enabled" data-off="<i class='fa fa-times'></i> SMS Disabled"
-											   data-onstyle="success" data-offstyle="warning" data-width="150" />
+											   data-toggle="toggle" data-on="<i class='fa fa-check'></i> SMS" data-off="<i class='fa fa-times'></i> SMS"
+											   data-onstyle="success" data-offstyle="warning" />
 							</label>
 						</div>
 						<c:if test="${status.error}">

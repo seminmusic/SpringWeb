@@ -13,7 +13,7 @@
            <add-attribute value="/css/bootstrap.min.css" />
            <add-attribute value="/js/bootstrapValidator/css/bootstrapValidator.min.css" />
            <add-attribute value="/css/font-awesome.min.css" />
-           <add-attribute value="/css/custom/login.css" />
+           <add-attribute value="/css/_custom/login.css" />
        </put-list-attribute>
        <!-- JS Core -->
        <put-list-attribute name="js">
@@ -28,19 +28,26 @@
        <put-attribute name="body"   value="" />
        <put-attribute name="footer" value="/WEB-INF/Tiles/fragments/_footer.jsp" />
        <!-- CSS Core -->
-       <put-list-attribute name="css">
+       <put-list-attribute name="css_core">
            <add-attribute value="/css/bootstrap.min.css" />
            <add-attribute value="/js/bootstrapValidator/css/bootstrapValidator.min.css" />
            <add-attribute value="/js/bootstrap-toggle/css/bootstrap-toggle.min.css" />
            <add-attribute value="/css/font-awesome.min.css" />
-           <add-attribute value="/css/custom/site.css" />
+       </put-list-attribute>
+       <!-- CSS Dodatno -->
+       <put-list-attribute name="css_dodatno">
+           
        </put-list-attribute>
        <!-- JS Core -->
-       <put-list-attribute name="js">
+       <put-list-attribute name="js_core">
            <add-attribute value="/js/jquery-3.1.1.min.js" />
            <add-attribute value="/js/bootstrap.min.js" />
            <add-attribute value="/js/bootstrapValidator/js/bootstrapValidator.min.js" />
            <add-attribute value="/js/bootstrap-toggle/js/bootstrap-toggle.min.js" />
+       </put-list-attribute>
+       <!-- JS Dodatno -->
+       <put-list-attribute name="js_dodatno">
+           
        </put-list-attribute>
    </definition>
    
@@ -54,9 +61,8 @@
    <definition name="Home/Index" extends="Layout.Default">
        <put-attribute name="title" value="BamPay Administration | Home" />
        <put-attribute name="body"  value="/WEB-INF/Views/Home/Index.jsp" />
-       <!-- Dodatno JS -->
-       <put-list-attribute name="js" inherit="true">
-           <add-attribute value="/js/custom/home.index.js" />
+       <put-list-attribute name="js_dodatno" inherit="true">
+           <add-attribute value="/js/_custom/home.index.js" />
        </put-list-attribute>
    </definition>
    
@@ -73,8 +79,8 @@
 		       <put-attribute name="_AppRoles" type="definition" value="Admin/_AppRoles" />
            </definition>
        </put-attribute>
-       <put-list-attribute name="js" inherit="true">
-           <add-attribute value="/js/custom/admin.applicationusersandroles.js" />
+       <put-list-attribute name="js_dodatno" inherit="true">
+           <add-attribute value="/js/_custom/admin.applicationusersandroles.js" />
        </put-list-attribute>
    </definition>
    <definition name="Admin/GenerateDDL" extends="Layout.Default">
@@ -95,9 +101,8 @@
    <definition name="Bank/Edit" extends="Layout.Default">
        <put-attribute name="title" value="BamPay Administration | New / Edit Bank" />
        <put-attribute name="body"  value="/WEB-INF/Views/Bank/Edit.jsp" />
-       <!-- Dodatno JS -->
-       <put-list-attribute name="js" inherit="true">
-           <add-attribute value="/js/custom/bank.edit.js" />
+       <put-list-attribute name="js_dodatno" inherit="true">
+           <add-attribute value="/js/_custom/bank.edit.js" />
        </put-list-attribute>
    </definition>
    
@@ -105,15 +110,28 @@
    <definition name="User/Index" extends="Layout.Default">
        <put-attribute name="title" value="BamPay Administration | Users" />
        <put-attribute name="body"  value="/WEB-INF/Views/User/Index.jsp" />
+       <put-list-attribute name="css_dodatno" inherit="true">
+           <add-attribute value="/js/select2/select2.css" />
+           <add-attribute value="/js/select2/select2-bootstrap.css" />
+           <add-attribute value="/js/DataTables-1.10.5/dataTables.bootstrap.css" />
+           <add-attribute value="/js/DataTables-1.10.5/dataTables.fontAwesome.css" />
+       </put-list-attribute>
+       <put-list-attribute name="js_dodatno" inherit="true">
+           <add-attribute value="/js/select2/select2.min.js" />
+           <add-attribute value="/js/select2/select2_locale_hr.js" />
+           <add-attribute value="/js/DataTables-1.10.5/jquery.dataTables.min.js" />
+           <add-attribute value="/js/DataTables-1.10.5/dataTables.bootstrap.js" />
+           <add-attribute value="/js/_custom/user.index.js" />
+       </put-list-attribute>
    </definition>
    
    <!-- Atm/Index page -->
    <definition name="Atm/Index" extends="Layout.Default">
        <put-attribute name="title" value="BamPay Administration | ATM" />
        <put-attribute name="body"  value="/WEB-INF/Views/Atm/Index.jsp" />
-       <put-list-attribute name="js" inherit="true">
+       <put-list-attribute name="js_dodatno" inherit="true">
        	   <add-attribute value="https://maps.googleapis.com/maps/api/js?key=AIzaSyD11vAyQe2x2jcW6q_k9QtI-cFSi4Wvwzw" />
-           <add-attribute value="/js/custom/atm.index.js" />
+           <add-attribute value="/js/_custom/atm.index.js" />
        </put-list-attribute>
    </definition>
    

@@ -14,10 +14,9 @@
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<link rel="shortcut icon" type="image/png" href="${pageContext.request.contextPath}/images/kviko-logo.png" />
+		
 		<!-- Tiles - Title: -->
-		<title>
-			<tiles:getAsString name="title"></tiles:getAsString>
-		</title>
+		<title><tiles:getAsString name="title"></tiles:getAsString></title>
 		
 		<!-- Tiles - CSS: -->
 	    <c:forEach var="style" items="${css}">
