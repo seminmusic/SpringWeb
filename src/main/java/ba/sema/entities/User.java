@@ -59,6 +59,9 @@ public class User
 	@Column(name = "registrationcodeexpiration", nullable = false)
 	private Timestamp registrationCodeExpiration;
 	
+	@Column(name = "registrationcodesentsms")
+	private Boolean registrationCodeSentSms;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "primaryKey.user")
 	private Set<BankUser> banksUsers = new HashSet<BankUser>();
 	
@@ -169,6 +172,15 @@ public class User
 	public void setRegistrationCodeExpiration(Timestamp registrationCodeExpiration)
 	{
 		this.registrationCodeExpiration = registrationCodeExpiration;
+	}
+	
+	public Boolean getRegistrationCodeSentSms()
+	{
+		return registrationCodeSentSms;
+	}
+	public void setRegistrationCodeSentSms(Boolean registrationCodeSentSms)
+	{
+		this.registrationCodeSentSms = registrationCodeSentSms;
 	}
 	
 	public Set<BankUser> getBanksUsers()

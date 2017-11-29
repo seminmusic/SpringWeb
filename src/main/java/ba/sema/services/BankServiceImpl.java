@@ -31,6 +31,8 @@ public class BankServiceImpl implements BankService
 		bank.setUppId(model.getUppId());
 		bank.setBamcardId(model.getBamcardId());
 		bank.setSmsRegCodeEnabled(model.getSmsRegCodeEnabled());
+		bank.setSmsDelayHours(model.getSmsDelayHours());
+		bank.setRegCodeValidityHours(model.getRegCodeValidityHours());
 		//
 		bankDAO.addBank(bank);
 	}
@@ -51,6 +53,8 @@ public class BankServiceImpl implements BankService
 			model.setUppId(bank.getUppId());
 			model.setBamcardId(bank.getBamcardId());
 			model.setSmsRegCodeEnabled(bank.getSmsRegCodeEnabled());
+			model.setSmsDelayHours(bank.getSmsDelayHours());
+			model.setRegCodeValidityHours(bank.getRegCodeValidityHours());
 			//
 			models.add(model);
 		}
@@ -75,6 +79,8 @@ public class BankServiceImpl implements BankService
 		bank.setUppId(model.getUppId());
 		bank.setBamcardId(model.getBamcardId());
 		bank.setSmsRegCodeEnabled(model.getSmsRegCodeEnabled());
+		bank.setSmsDelayHours(model.getSmsDelayHours());
+		bank.setRegCodeValidityHours(model.getRegCodeValidityHours());
 		//
 		bankDAO.updateBank(bank);
 	}
@@ -91,6 +97,8 @@ public class BankServiceImpl implements BankService
 		model.setUppId(bank.getUppId());
 		model.setBamcardId(bank.getBamcardId());
 		model.setSmsRegCodeEnabled(bank.getSmsRegCodeEnabled());
+		model.setSmsDelayHours(bank.getSmsDelayHours());
+		model.setRegCodeValidityHours(bank.getRegCodeValidityHours());
 		return model;
 	}
 }

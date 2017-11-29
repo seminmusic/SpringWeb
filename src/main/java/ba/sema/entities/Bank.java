@@ -43,6 +43,12 @@ public class Bank
 	@Column(name = "smsregcode", nullable = false)
 	private Boolean smsRegCodeEnabled;
 	
+	@Column(name = "smsdelayhours", nullable = false)
+	private Short smsDelayHours;
+	
+	@Column(name = "regcodevalidityhours", nullable = false)
+	private Short regCodeValidityHours;
+	
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "primaryKey.bank")
 	private Set<BankUser> banksUsers = new HashSet<BankUser>();
 	
@@ -108,6 +114,24 @@ public class Bank
 	public void setSmsRegCodeEnabled(Boolean smsRegCodeEnabled)
 	{
 		this.smsRegCodeEnabled = smsRegCodeEnabled;
+	}
+	
+	public Short getSmsDelayHours()
+	{
+		return smsDelayHours;
+	}
+	public void setSmsDelayHours(Short smsDelayHours)
+	{
+		this.smsDelayHours = smsDelayHours;
+	}
+	
+	public Short getRegCodeValidityHours()
+	{
+		return regCodeValidityHours;
+	}
+	public void setRegCodeValidityHours(Short regCodeValidityHours)
+	{
+		this.regCodeValidityHours = regCodeValidityHours;
 	}
 	
 	public Set<BankUser> getBanksUsers()

@@ -19,6 +19,8 @@
 				<th>UPP ID</th>
 				<th>Bamcard ID</th>
 				<th>SMS Enabled</th>
+				<th>SMS Delay Hours</th>
+				<th>Reg. Code Validity Hours</th>
 				<sec:authorize access="hasAnyAuthority('ADMIN', 'UNOS')">
 					<th>Action</th>
 				</sec:authorize>
@@ -36,6 +38,8 @@
 					<td>
 						<i class="fa ${bankModel.smsRegCodeEnabled ? 'fa-check' : 'fa-times'}" style="color:${bankModel.smsRegCodeEnabled ? 'limegreen' : 'red'}"></i>
 					</td>
+					<td>${bankModel.smsDelayHours}</td>
+					<td>${bankModel.regCodeValidityHours}</td>
 					<sec:authorize access="hasAnyAuthority('ADMIN', 'UNOS')">
 						<td>
 							<a href="${pageContext.request.contextPath}/banks/edit-bank/${bankModel.bankId}" style="float:left">

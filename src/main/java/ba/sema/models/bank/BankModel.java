@@ -10,6 +10,8 @@ public class BankModel
 	private String uppId;
 	private Integer bamcardId;
 	private Boolean smsRegCodeEnabled;
+	private Short smsDelayHours;
+	private Short regCodeValidityHours;
 	
 	
 	public Integer getBankId()
@@ -73,5 +75,23 @@ public class BankModel
 	public void setSmsRegCodeEnabled(Boolean smsRegCodeEnabled)
 	{
 		this.smsRegCodeEnabled = smsRegCodeEnabled;
+	}
+	
+	public Short getSmsDelayHours()
+	{
+		return smsDelayHours;
+	}
+	public void setSmsDelayHours(Short smsDelayHours)
+	{
+		this.smsDelayHours = smsDelayHours;
+	}
+	
+	public Short getRegCodeValidityHours()
+	{
+		return regCodeValidityHours;
+	}
+	public void setRegCodeValidityHours(Short regCodeValidityHours)
+	{
+		this.regCodeValidityHours = regCodeValidityHours;
 	}	
 }

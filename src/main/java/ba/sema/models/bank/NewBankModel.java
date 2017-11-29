@@ -31,6 +31,12 @@ public class NewBankModel
 	
 	private Boolean smsRegCodeEnabled;
 	
+	@NotNull(message = "Podatak je obavezan")
+	private Short smsDelayHours = 0;
+	
+	@NotNull(message = "Podatak je obavezan")
+	private Short regCodeValidityHours = 24;
+	
 	
 	public Integer getBankId()
 	{
@@ -93,5 +99,23 @@ public class NewBankModel
 	public void setSmsRegCodeEnabled(Boolean smsRegCodeEnabled)
 	{
 		this.smsRegCodeEnabled = smsRegCodeEnabled;
+	}
+	
+	public Short getSmsDelayHours()
+	{
+		return smsDelayHours;
+	}
+	public void setSmsDelayHours(Short smsDelayHours)
+	{
+		this.smsDelayHours = smsDelayHours;
+	}
+	
+	public Short getRegCodeValidityHours()
+	{
+		return regCodeValidityHours;
+	}
+	public void setRegCodeValidityHours(Short regCodeValidityHours)
+	{
+		this.regCodeValidityHours = regCodeValidityHours;
 	}	
 }

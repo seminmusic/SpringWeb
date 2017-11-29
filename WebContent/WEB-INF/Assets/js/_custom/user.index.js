@@ -25,16 +25,35 @@ $(function() {
         	{ "sName": "dailyLimitTransactions" },
         	{ "sName": "dailyLimitAmount" },
         	{ "sName": "loginAttempts" }
-        ]
+        ],
+        "fnRowCallback": function (redNode, podaciReda, iDisplayIndex) {
+            // Postavljanje ID na red:
+            redNode.id = "user-" + podaciReda[0];
+        }
+	});
+	
+	// Promjena filtera:
+	$("#filter-polje").change(function () {
+	    var indeksKolone = $(this).val();
+	    $("#filter-vrijednost").val("");
+	    $("#filter-vrijednost").pikaday("destroy");
+	    if ($.inArray(indeksKolone, ["4", "5", "6", "7"]) > -1) {
+	        $("#filter-vrijednost").pikaday({
+	            format: "DD.MM.YYYY",
+	            onSelect: function () {
+	                Pretraga(indeksKolone, this.getMoment().format("YYYY-MM-DD"));
+	            }
+	        });
+	    }
+	    else if (indeksKolone == "") {
+	        // Poništavanje pretrage:
+	        tabelaUsers.columns().search("").draw();
+	    }
 	});
 	
 	$("#filter-vrijednost").keyup(function (e) {
 	    var indeksKolone = $("#filter-polje").val();
 	    var podatak = $(this).val();
-	    if (podatak == "") {
-	    	tabelaUsers.columns().search("").draw();  // Poništavanje pretrage
-	    	return;
-	    }
 	    if (e.which == 13 && indeksKolone != "" && podatak != "") {
 	        Pretraga(indeksKolone, podatak);
 	    }

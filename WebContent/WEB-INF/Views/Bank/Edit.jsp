@@ -93,6 +93,8 @@
 					</div>
 				</spring:bind>
 			</div>
+		</div>
+		<div class="row">
 			<div class="col-xs-3">
 				<spring:bind path="smsRegCodeEnabled">
 					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
@@ -107,6 +109,38 @@
                				<i class="form-control-feedback glyphicon-remove glyphicon server-side-error" style="display:block"></i>
                				<small class="help-block server-side-error" style="display:block">${status.errorMessage}</small>
              			</c:if>
+					</div>
+				</spring:bind>
+			</div>
+			<div class="col-xs-3">
+				<spring:bind path="smsDelayHours">
+					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
+						<form:label path="smsDelayHours" class="control-label">SMS Delay Hours:</form:label>
+						<form:input path="smsDelayHours" class="form-control" type="text" autocomplete="off"
+									data-bv-notempty="true"
+									data-bv-notempty-message="Podatak je obavezan"
+									data-bv-integer="true"
+									data-bv-integer-message="Unesite cijeli broj" />
+						<c:if test="${status.error}">
+							<i class="form-control-feedback glyphicon-remove glyphicon server-side-error" style="display:block"></i>
+							<small class="help-block server-side-error" style="display:block">${status.errorMessage}</small>
+						</c:if>
+					</div>
+				</spring:bind>
+			</div>
+			<div class="col-xs-3">
+				<spring:bind path="regCodeValidityHours">
+					<div class="form-group ${status.error ? 'has-error has-feedback' : ''}">
+						<form:label path="regCodeValidityHours" class="control-label">Reg. Code Validity Hours:</form:label>
+						<form:input path="regCodeValidityHours" class="form-control" type="text" autocomplete="off"
+									data-bv-notempty="true"
+									data-bv-notempty-message="Podatak je obavezan"
+									data-bv-integer="true"
+									data-bv-integer-message="Unesite cijeli broj" />
+						<c:if test="${status.error}">
+							<i class="form-control-feedback glyphicon-remove glyphicon server-side-error" style="display:block"></i>
+							<small class="help-block server-side-error" style="display:block">${status.errorMessage}</small>
+						</c:if>
 					</div>
 				</spring:bind>
 			</div>
