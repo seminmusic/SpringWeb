@@ -1,3 +1,2 @@
 http://javawebtutor.com/articles/spring/spring-mvc-hibernate-crud-example.php
 http://www.journaldev.com/3626/hibernate-validator-jsr303-example-tutorial
-
